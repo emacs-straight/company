@@ -2,6 +2,10 @@
 
 ## Next
 
+* Added support for icons
+  ([#1070](https://github.com/company-mode/company-mode/pull/1070)).
+  New user option `company-format-margin-function`.
+  New backend command `kind`.
 * New user option `company-abort-on-unique-match`
   ([#1046](https://github.com/company-mode/company-mode/issues/1046)).
 * `company-select-mouse` is a new frontend action
