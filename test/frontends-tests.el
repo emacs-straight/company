@@ -275,11 +275,11 @@
          (company-icon-size 15)
          (company-candidates '("ArrayList"))
          (company-candidates-length 1)
-         (default-directory company-package-root)
+         (default-directory company-icons-root)
          (company-tooltip-maximum-width 20)
          (company-tooltip-minimum-width 20)
          (company-format-margin-function
-          'company-vscode-light-icons-margin-function)
+          'company-vscode-light-icons-margin)
          (company-backend (lambda (c &rest _) (pcase c (`kind 'class)))))
     (let ((tooltip-line (car (company--create-lines 0 999))))
       (should (equal tooltip-line "  ArrayList            "))
@@ -288,8 +288,8 @@
                'space))
       (should (equal
                (get-text-property 0 'display tooltip-line)
-               `(image :file ,(expand-file-name "vscode-light/symbol-class.png")
-                       :type png :width 15 :height 15 :ascent center
+               `(image :file ,(expand-file-name "vscode-light/symbol-class.svg")
+                       :type svg :width 15 :height 15 :ascent center
                        :background ,(face-attribute 'company-tooltip-selection
                                                     :background)))))))
 
@@ -321,7 +321,7 @@
     (should (ert-equal-including-properties
              (company-fill-propertize str1 str2 8 nil nil nil)
              #("str1str2"
-               0 4 (face (company-tooltip) mouse-face (company-tooltip-mouse))
+               0 4 (face company-tooltip mouse-face (company-tooltip-mouse))
                4 8 (face (company-tooltip-annotation company-tooltip)
                          mouse-face (company-tooltip-mouse)))))))
 
