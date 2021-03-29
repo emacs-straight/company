@@ -2943,15 +2943,15 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
     (dotimes (_ len)
       (let* ((value (pop lines-copy))
              (annotation (company-call-backend 'annotation value))
-             (left-margin (or (pop left-margins)
-                              (company-space-string left-margin-size))))
+             (left (or (pop left-margins)
+                       (company-space-string left-margin-size))))
         (setq value (company--clean-string value))
         (when annotation
           (setq annotation (company--clean-string annotation))
           (when company-tooltip-align-annotations
             ;; `lisp-completion-at-point' adds a space.
             (setq annotation (string-trim-left annotation))))
-        (push (list value annotation left-margin) items)
+        (push (list value annotation left) items)
         (setq width (max (+ (length value)
                             (if (and annotation company-tooltip-align-annotations)
                                 (1+ (length annotation))
@@ -2980,7 +2980,6 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
                (str (car item))
                (annotation (cadr item))
                (left (nth 2 item))
-               (margin (company-space-string company-tooltip-margin))
                (right (company-space-string company-tooltip-margin))
                (width width))
           (when (< numbered 10)
@@ -2988,7 +2987,7 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
             (cl-incf numbered)
             (setf (if (eq company-show-numbers 'left) left right)
                   (concat (funcall company-show-numbers-function numbered)
-                          margin)))
+                          (if (eq company-show-numbers 'left) left right))))
           (push (concat
                  (company-fill-propertize str annotation
                                           width (equal i selection)
