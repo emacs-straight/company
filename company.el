@@ -428,8 +428,8 @@ into the buffer.  The second argument is the candidate.  Can be used to
 modify it, e.g. to expand a snippet.
 
 `kind': The second argument is a completion candidate.  Return a symbol
-describing the kind of the candidate. Refer `company-vscode-icons-mapping' for
-the possible values.
+describing the kind of the candidate.  Refer to `company-vscode-icons-mapping'
+for the possible values.
 
 The backend should return nil for all commands it does not support or
 does not know about.  It should also be callable interactively and use
@@ -1372,6 +1372,8 @@ end of the match."
     (enum . "symbol-enumerator.svg")
     (event . "symbol-event.svg")
     (field . "symbol-field.svg")
+    (file . "symbol-file.svg")
+    (folder . "folder.svg")
     (interface . "symbol-interface.svg")
     (key . "symbol-key.svg")
     (keyword . "symbol-keyword.svg")
@@ -1394,9 +1396,12 @@ end of the match."
    (expand-file-name "icons"
                      (file-name-directory (or load-file-name buffer-file-name)))))
 
-(defcustom company-icon-size 30
-  "Default icons size."
-  :type 'integer)
+(defcustom company-icon-size '(auto-scale . 15)
+  "Size of icons indicating completion kind in the popup."
+  :type '(choice (integer :tag "Size in pixels" :value 15)
+                 (cons :tag "Size in pixels, scaled 2x on HiDPI screens"
+                       (const auto-scale)
+                       (integer :value 15))))
 
 (defun company--render-icons-margin (icon-mapping root-dir candidate selected)
   (if-let ((candidate candidate)
@@ -1406,18 +1411,28 @@ end of the match."
                                       'company-tooltip-selection
                                     'company-tooltip)
                                   :background))
+             (icon-size (cond
+                         ((integerp company-icon-size)
+                          company-icon-size)
+                         ((and (consp company-icon-size)
+                               (eq 'auto-scale (car company-icon-size)))
+                          (let ((base-size (cdr company-icon-size)))
+                            (if (> (frame-char-height)
+                                   (* 2 base-size))
+                                (* 2 base-size)
+                              base-size)))))
              (spec (list 'image
                          :file (expand-file-name icon-file root-dir)
                          :type 'svg
-                         :width company-icon-size
-                         :height company-icon-size
+                         :width icon-size
+                         :height icon-size
                          :ascent 'center
                          :background (unless (eq bkg 'unspecified)
                                        bkg))))
         (concat
          (propertize " " 'display spec)
          (propertize " " 'display `(space . (:width ,(- 2 (car (image-size spec))))))))
-    "  "))
+    nil))
 
 (defun company-vscode-dark-icons-margin (candidate selected)
   "Margin function which returns icons from vscode's dark theme."
@@ -2817,11 +2832,10 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
                      (mapcar (lambda (f) (company--face-attribute f attr))
                              face)))))
 
-(defun company--replacement-string (lines old column nl &optional align-top)
-  (cl-decf column (or (when company-format-margin-function
-                        (when-let (margin (funcall company-format-margin-function nil nil))
-                          (length margin)))
-                      company-tooltip-margin))
+(defun company--replacement-string (lines column-offset old column nl &optional align-top)
+  (cl-decf column column-offset)
+
+  (when (< column 0) (setq column 0))
 
   (when (and align-top company-tooltip-flip-when-above)
     (setq lines (reverse lines)))
@@ -2832,24 +2846,18 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
     (when (> width remaining-cols)
       (cl-decf column (- width remaining-cols))))
 
-  (let ((offset (and (< column 0) (- column)))
-        new)
-    (when offset
-      (setq column 0))
+  (let (new)
     (when align-top
       ;; untouched lines first
       (dotimes (_ (- (length old) (length lines)))
         (push (pop old) new)))
     ;; length into old lines.
     (while old
-      (push (company-modify-line (pop old)
-                                 (company--offset-line (pop lines) offset)
-                                 column)
+      (push (company-modify-line (pop old) (pop lines) column)
             new))
     ;; Append whole new lines.
     (while lines
-      (push (concat (company-space-string column)
-                    (company--offset-line (pop lines) offset))
+      (push (concat (company-space-string column) (pop lines))
             new))
 
     ;; XXX: Also see branch 'more-precise-extend'.
@@ -2869,14 +2877,11 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
       (when nl (put-text-property 0 1 'cursor t str))
       str)))
 
-(defun company--offset-line (line offset)
-  (if (and offset line)
-      (substring line offset)
-    line))
-
 (defun company--create-lines (selection limit)
   (let ((len company-candidates-length)
         (window-width (company--window-width))
+        left-margins
+        left-margin-size
         lines
         width
         lines-copy
@@ -2914,25 +2919,39 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
           len (min limit len)
           lines-copy lines)
 
-    (cl-decf window-width (* 2 company-tooltip-margin))
     (when scrollbar-bounds (cl-decf window-width))
 
-    (dotimes (i len)
+    (when company-format-margin-function
+      (let ((lines-copy lines-copy)
+            res)
+        (dotimes (i len)
+          (push (funcall company-format-margin-function
+                         (pop lines-copy)
+                         (equal selection i))
+                res))
+        (setq left-margins (nreverse res))))
+
+    ;; XXX: format-function outputting shorter strings than the
+    ;; default margin is not supported (yet?).
+    (setq left-margin-size (apply #'max company-tooltip-margin
+                                  (mapcar #'length left-margins)))
+
+    (cl-decf window-width company-tooltip-margin)
+    (cl-decf window-width left-margin-size)
+
+    (dotimes (_ len)
       (let* ((value (pop lines-copy))
              (annotation (company-call-backend 'annotation value))
-             (candidate-prefix (when company-format-margin-function
-                                 (funcall company-format-margin-function
-                                          value
-                                          (equal selection i)))))
+             (left-margin (or (pop left-margins)
+                              (company-space-string left-margin-size))))
         (setq value (company--clean-string value))
         (when annotation
           (setq annotation (company--clean-string annotation))
           (when company-tooltip-align-annotations
             ;; `lisp-completion-at-point' adds a space.
             (setq annotation (string-trim-left annotation))))
-        (push (list value annotation candidate-prefix) items)
+        (push (list value annotation left-margin) items)
         (setq width (max (+ (length value)
-                            (length candidate-prefix)
                             (if (and annotation company-tooltip-align-annotations)
                                 (1+ (length annotation))
                               (length annotation)))
@@ -2959,10 +2978,9 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
         (let* ((item (pop items))
                (str (car item))
                (annotation (cadr item))
-               (candidate-prefix (nth 2 item))
+               (left (nth 2 item))
                (margin (company-space-string company-tooltip-margin))
-               (left (or candidate-prefix margin))
-               (right margin)
+               (right (company-space-string company-tooltip-margin))
                (width width))
           (when (< numbered 10)
             (cl-decf width 2)
@@ -2982,7 +3000,9 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
       (when remainder
         (push (company--scrollpos-line remainder width) new))
 
-      (nreverse new))))
+      (cons
+       left-margin-size
+       (nreverse new)))))
 
 (defun company--scrollbar-bounds (offset limit length)
   (when (> length limit)
@@ -3040,9 +3060,12 @@ Returns a negative number if the tooltip should be displayed above point."
         (setq company-pseudo-tooltip-overlay ov)
         (overlay-put ov 'company-replacement-args args)
 
-        (let ((lines (company--create-lines selection (abs height))))
+        (let* ((lines-and-offset (company--create-lines selection (abs height)))
+               (lines (cdr lines-and-offset))
+               (column-offset (car lines-and-offset)))
           (overlay-put ov 'company-display
-                       (apply 'company--replacement-string lines args))
+                       (apply 'company--replacement-string
+                              lines column-offset args))
           (overlay-put ov 'company-width (string-width (car lines))))
 
         (overlay-put ov 'company-column column)
@@ -3056,12 +3079,14 @@ Returns a negative number if the tooltip should be displayed above point."
 
 (defun company-pseudo-tooltip-edit (selection)
   (let* ((height (overlay-get company-pseudo-tooltip-overlay 'company-height))
-         (lines  (company--create-lines selection (abs height))))
+         (lines-and-offset  (company--create-lines selection (abs height)))
+         (lines (cdr lines-and-offset))
+         (column-offset (car lines-and-offset)))
     (overlay-put company-pseudo-tooltip-overlay 'company-width
                  (string-width (car lines)))
     (overlay-put company-pseudo-tooltip-overlay 'company-display
                  (apply 'company--replacement-string
-                        lines
+                        lines column-offset
                         (overlay-get company-pseudo-tooltip-overlay
                                      'company-replacement-args)))))
 
