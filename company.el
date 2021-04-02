@@ -1324,23 +1324,27 @@ update if FORCE-UPDATE."
 
 (defun company--strip-duplicates (candidates)
   (let ((c2 candidates)
-        (annos 'unk))
+        (extras 'unk))
     (while c2
       (setcdr c2
               (let ((str (pop c2)))
                 (while (let ((str2 (car c2)))
                          (if (not (equal str str2))
                              (progn
-                               (setq annos 'unk)
+                               (setq extras 'unk)
                                nil)
-                           (when (eq annos 'unk)
-                             (setq annos (list (company-call-backend
-                                                'annotation str))))
-                           (let ((anno2 (company-call-backend
-                                         'annotation str2)))
-                             (if (member anno2 annos)
+                           (when (eq extras 'unk)
+                             (setq extras (list (cons (company-call-backend
+                                                       'annotation str)
+                                                      (company-call-backend
+                                                       'kind str)))))
+                           (let ((extra2 (cons (company-call-backend
+                                                'annotation str2)
+                                               (company-call-backend
+                                                'kind str2))))
+                             (if (member extra2 extras)
                                  t
-                               (push anno2 annos)
+                               (push extra2 extras)
                                nil))))
                   (pop c2))
                 c2)))))
@@ -1482,12 +1486,16 @@ end of the match."
   "Mapping of the text icons."
   :type 'list)
 
-(defun company-text-icons-margin (candidate selected)
+(defcustom company-text-icons-format "%s "
+  "Format string for printing the text icons."
+  :type 'string)
+
+(defun company-text-icons-margin (candidate _selected)
   "Margin function which returns unicode icons."
   (when-let ((candidate candidate)
              (kind (company-call-backend 'kind candidate))
              (icon (alist-get kind company-text-icons-mapping)))
-    icon))
+    (format company-text-icons-format icon)))
 
 (defun company-detect-icons-margin (candidate selected)
   "Margin function which picks from vscodes icons or unicode icons
@@ -2914,10 +2922,10 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
             new))
 
     ;; XXX: Also see branch 'more-precise-extend'.
-    (let* ((nl-face (list
-                     :extend t
+    (let* ((nl-face `(,@(when (version<= "27" emacs-version)
+                          '(:extend t))
                      :inverse-video nil
-                     :background (or (company--face-attribute 'default :background)
+                     :background ,(or (company--face-attribute 'default :background)
                                      (face-attribute 'default :background nil t))))
            (str (apply #'concat
                        (when nl " \n")
