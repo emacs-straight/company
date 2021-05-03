@@ -1439,6 +1439,7 @@ end of the match."
                                       'company-tooltip-selection
                                     'company-tooltip)
                                   :background))
+             (dfw (default-font-width))
              (icon-size (cond
                          ((integerp company-icon-size)
                           company-icon-size)
@@ -1447,15 +1448,12 @@ end of the match."
                          ((and (consp company-icon-size)
                                (eq 'auto-scale (car company-icon-size)))
                           (let ((base-size (cdr company-icon-size))
-                                (dfw (default-font-width))
-                                size)
-                            (setq size (if (> (default-font-height)
-                                              (* 2 base-size))
-                                           (* 2 base-size)
-                                         base-size))
-                            (when (> size (* 2 dfw))
-                              (setq size (* 2 dfw)))
-                            size))))
+                                (dfh (default-font-height)))
+                            (min
+                             (if (> dfh (* 2 base-size))
+                                 (* 2 base-size)
+                               base-size)
+                             (* 2 dfw))))))
              (spec (list 'image
                          :file (expand-file-name icon-file root-dir)
                          :type 'svg
@@ -1463,10 +1461,11 @@ end of the match."
                          :height icon-size
                          :ascent 'center
                          :background (unless (eq bkg 'unspecified)
-                                       bkg))))
+                                       bkg)))
+             (spacer-px-width (- (* 2 dfw) icon-size)))
         (concat
          (propertize " " 'display spec)
-         (propertize " " 'display `(space . (:width ,(- 2 (car (image-size spec))))))))
+         (propertize " " 'display `(space . (:width (,spacer-px-width))))))
     nil))
 
 (defun company-vscode-dark-icons-margin (candidate selected)
