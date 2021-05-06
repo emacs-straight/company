@@ -1505,8 +1505,8 @@ end of the match."
     (ruler "r" shadow)
     (snippet "S" font-lock-string-face)
     (string "s" font-lock-string-face)
-    (struct "s" font-lock-variable-name-face)
-    (text "t" shadow)
+    (struct "%" font-lock-variable-name-face)
+    (text "w" shadow)
     (value "v" font-lock-builtin-face)
     (variable "v" font-lock-variable-name-face)
     (t "." shadow))
@@ -1556,7 +1556,7 @@ See `company-text-icons-mapping'."
 (declare-function color-rgb-to-hex "color")
 (declare-function color-gradient "color")
 
-(cl-defsubst company-text-icons--extract-property (face property)
+(defun company-text-icons--extract-property (face property)
   "Try to extract PROPERTY from FACE.
 If FACE isn't a valid face return FACE as is. If FACE doesn't have
 PROPERTY return nil."
