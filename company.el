@@ -2543,11 +2543,11 @@ inserted."
   "Insert a candidate visible on the tooltip's row NUMBER.
 
 Inserts one of the first ten candidates,
-numerated according to the current scrolling position.
-NUMBER 1 inserts a candidate visible on the first row.
-NUMBER 0 inserts a candidate visible on the tenth row of the tooltip.
+numbered according to the current scrolling position starting with 1.
 
-When called interactively, uses the last typed digit, stripping the modifiers.
+When called interactively, uses the last typed digit, stripping the
+modifiers and translating 0 into 10, so `M-1' inserts the first visible
+candidate, and `M-0' insert to 10th one.
 
 To show hint numbers beside the candidates, enable `company-show-numbers'."
   (interactive
@@ -2562,13 +2562,13 @@ To show hint numbers beside the candidates, enable `company-show-numbers'."
   (company--complete-nth (1- number)))
 
 (defun company--complete-nth (row)
-   "Insert a candidate visible on the tooltip's zero-based ROW."
-   (when (company-manual-begin)
-     (and (or (< row 0) (>= row (- company-candidates-length
-                                   company-tooltip-offset)))
-          (user-error "No candidate on the row number %d" row))
-     (company-finish (nth (+ row company-tooltip-offset)
-                          company-candidates))))
+  "Insert a candidate visible on the tooltip's zero-based ROW."
+  (when (company-manual-begin)
+    (and (or (< row 0) (>= row (- company-candidates-length
+                                  company-tooltip-offset)))
+         (user-error "No candidate on the row number %d" row))
+    (company-finish (nth (+ row company-tooltip-offset)
+                         company-candidates))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
