@@ -93,7 +93,7 @@
   "Face used for the selection in the tooltip.")
 
 (defface company-tooltip-deprecated
-  '((t (:inherit default :strike-through t)))
+  '((t (:strike-through t)))
   "Face used for the deprecated items.")
 
 (defface company-tooltip-search
@@ -3063,7 +3063,11 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
       (add-face-text-property 0 width 'company-tooltip-selection t line))
 
     (when (company-call-backend 'deprecated value)
-      (add-face-text-property 0 width 'company-tooltip-deprecated t line))
+      (add-face-text-property margin
+                              (min
+                               (+ margin (length value))
+                               (- width (length right)))
+                              'company-tooltip-deprecated t line))
 
     (add-face-text-property 0 width 'company-tooltip t line)
     line))
