@@ -1044,10 +1044,10 @@ means that `company-mode' is always turned on except in `message-mode' buffers."
 (defun company-install-map ()
   (unless (or (cdar company-emulation-alist)
               (null company-my-keymap))
-    (setf (cdar company-emulation-alist) company-my-keymap)))
+    (setq-local company-emulation-alist `((t . ,company-my-keymap)))))
 
 (defun company-uninstall-map ()
-  (setf (cdar company-emulation-alist) nil))
+  (kill-local-variable 'company-emulation-alist))
 
 (defun company--company-command-p (keys)
   "Checks if the keys are part of company's overriding keymap"
@@ -2766,7 +2766,8 @@ inserted."
         (call-interactively 'company-complete-selection)
       (call-interactively 'company-complete-common)
       (when company-candidates
-        (setq this-command 'company-complete-common)))))
+        (setq this-command 'company-complete-common)))
+    this-command))
 
 (define-obsolete-function-alias
   'company-complete-number
