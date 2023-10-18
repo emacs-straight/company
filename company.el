@@ -1189,6 +1189,13 @@ be recomputed when this value changes."
   "Delete KEY from cache."
   (remhash key company--cache))
 
+(defun company-cache-expire ()
+  "Delete all keys from the cache that are set to be expired."
+  (maphash (lambda (k v)
+             (when (assoc-default :expire v)
+               (remhash k company--cache)))
+           company--cache))
+
 (defun company-call-backend (&rest args)
   (company--force-sync #'company-call-backend-raw args company-backend))
 
@@ -2264,10 +2271,7 @@ For more details see `company-insertion-on-trigger' and
           company--multi-uncached-backends nil
           company--multi-min-prefix nil
           company-point nil)
-    (maphash (lambda (k v)
-               (when (assoc-default :expire v)
-                 (remhash k company--cache)))
-             company--cache)
+    (company-cache-expire)
     (when company-timer
       (cancel-timer company-timer))
     (company-echo-cancel t)
@@ -3752,7 +3756,7 @@ Returns a negative number if the tooltip should be displayed above point."
     (pre-command (company-pseudo-tooltip-hide-temporarily))
     (unhide
      (let ((ov company-pseudo-tooltip-overlay))
-       (when (> (overlay-get ov 'company-height) 0)
+       (when (and ov (> (overlay-get ov 'company-height) 0))
          ;; Sleight of hand: if the current line wraps, we adjust the
          ;; start of the overlay so that the popup does not zig-zag,
          ;; but don't update the popup's background.  This seems just
