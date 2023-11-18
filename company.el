@@ -2918,9 +2918,12 @@ from the candidates list.")
                      (get-buffer-create " *company-sps*"))))
      (unwind-protect
          (progn
-           (when fra-local
-             (dolist (buf bufs)
-               (with-current-buffer buf
+           (dolist (buf bufs)
+             (with-current-buffer buf
+               (when (bound-and-true-p display-line-numbers)
+                 ;; Workaround for debbugs#67248.
+                 (setq-local display-line-numbers nil))
+               (when fra-local
                  (setq-local face-remapping-alist fra-local))))
            ,@body)
        (dolist (buf bufs)
@@ -3818,8 +3821,15 @@ Returns a negative number if the tooltip should be displayed above point."
 
       (let (nl beg end ov args)
         (save-excursion
-          (setq nl (< (move-to-window-line row) row)
-                beg (point)
+          (setq nl (< (move-to-window-line row) row))
+          ;; HACK: Very specific to the log-edit buffer.  Could alternatively
+          ;; look up the `display-line-numbers-disable' property, but with
+          ;; larger consequences.
+          (when (and (not nl) (> height 0))
+            (while (eq (get-char-property (point) 'face)
+                       'log-edit-headers-separator)
+              (vertical-motion 1)))
+          (setq beg (point)
                 end (save-excursion
                       (vertical-motion (abs height))
                       (point))
