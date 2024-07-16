@@ -4340,7 +4340,7 @@ Delay is determined by `company-tooltip-idle-delay'."
     (company-preview-frontend command)))
 
 (defun company--show-inline-p ()
-  (let* ((boundaries (company--boundaries (car company-candidates)))
+  (let* ((boundaries (and company-candidates (company--boundaries)))
          (prefix (car boundaries))
          (suffix (cdr boundaries))
          (ignore-case (company-call-backend 'ignore-case))
