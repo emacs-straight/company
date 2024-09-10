@@ -1,4 +1,4 @@
-This is docowsQme.info, produced by makeinfo version 6.8 from
+This is docxIpc3k.info, produced by makeinfo version 6.8 from
 company.texi.
 
 This user manual is for Company version 0.10.0 (16 April 2023).
@@ -15,7 +15,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docowsQme.info,  Node: Top,  Next: Overview,  Up: (dir)
+File: docxIpc3k.info,  Node: Top,  Next: Overview,  Up: (dir)
 
 Company
 *******
@@ -82,7 +82,7 @@ Backends
 
 
 
-File: docowsQme.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
+File: docxIpc3k.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
 
 1 Overview
 **********
@@ -99,7 +99,7 @@ writers, and scientists during code and text writing.
 * Structure::
 
 
-File: docowsQme.info,  Node: Terminology,  Next: Structure,  Up: Overview
+File: docxIpc3k.info,  Node: Terminology,  Next: Structure,  Up: Overview
 
 1.1 Terminology
 ===============
@@ -127,7 +127,7 @@ with the Emacs’s user option ‘completion-styles’.  For illustrations on
 how Company visualizes the matches, *note Frontends::.
 
 
-File: docowsQme.info,  Node: Structure,  Prev: Terminology,  Up: Overview
+File: docxIpc3k.info,  Node: Structure,  Prev: Terminology,  Up: Overview
 
 1.2 Structure
 =============
@@ -161,7 +161,7 @@ initialization file (*note (emacs)Init File::):
      (add-hook 'after-init-hook 'company-tng-mode)
 
 
-File: docowsQme.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
+File: docxIpc3k.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
 
 2 Getting Started
 *****************
@@ -176,7 +176,7 @@ This chapter provides basic instructions for Company setup and usage.
 * Commands::
 
 
-File: docowsQme.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
+File: docxIpc3k.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
 
 2.1 Installation
 ================
@@ -188,7 +188,7 @@ form of both stable and development releases.  To install Company, type
 For more details on Emacs package archives, *note (emacs)Packages::.
 
 
-File: docowsQme.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
+File: docxIpc3k.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
 
 2.2 Initial Setup
 =================
@@ -210,7 +210,7 @@ To have Company always enabled for the following sessions, add the line
 (emacs)Init File::).
 
 
-File: docowsQme.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
+File: docxIpc3k.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
 
 2.3 Usage Basics
 ================
@@ -232,7 +232,7 @@ respectively key bindings ‘C-n’ and ‘C-p’, then do one of the following:
    • Hit ‘C-g’ to stop activity of Company.
 
 
-File: docowsQme.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
+File: docxIpc3k.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
 
 2.4 Commands
 ============
@@ -311,7 +311,7 @@ utilize ‘M-x describe-keymap <RET> company-active-map’ or
 ‘C-h f <RET> company-mode’.
 
 
-File: docowsQme.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
+File: docxIpc3k.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
 
 3 Customization
 ***************
@@ -328,7 +328,7 @@ approaches.
 * Configuration File::
 
 
-File: docowsQme.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
+File: docxIpc3k.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
 
 3.1 Customization Interface
 ===========================
@@ -344,7 +344,7 @@ For instructions on how to change the settings, *note (emacs)Changing a
 Variable::.
 
 
-File: docowsQme.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
+File: docxIpc3k.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
 
 3.2 Configuration File
 ======================
@@ -440,7 +440,7 @@ Company exposes the following life-cycle hooks:
  -- User Option: company-after-completion-hook
 
 
-File: docowsQme.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
+File: docxIpc3k.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
 
 4 Frontends
 ***********
@@ -469,7 +469,7 @@ displayed candidates can be searched, filtered, and quick-accessed.
 * Quick Access a Candidate::
 
 
-File: docowsQme.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
+File: docxIpc3k.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
 
 4.1 Tooltip Frontends
 =====================
@@ -724,7 +724,7 @@ image-types’.  Before compiling Emacs, make sure ‘librsvg’ is installed
 on your system.
 
 
-File: docowsQme.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
+File: docxIpc3k.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
 
 4.2 Preview Frontends
 =====================
@@ -763,7 +763,7 @@ The look of the preview is controlled by the following faces:
 Terminology::) may be shown in full after point.
 
 
-File: docowsQme.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
+File: docxIpc3k.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
 
 4.3 Echo Frontends
 ==================
@@ -804,7 +804,7 @@ To apply visual changes to the output of these frontends, configure the
 faces ‘company-echo’ and ‘company-echo-common’.
 
 
-File: docowsQme.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
+File: docxIpc3k.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
 
 4.4 Candidates Search
 =====================
@@ -839,7 +839,7 @@ Search matches are distinguished by the ‘company-tooltip-search’ and
              [image src="./images/small/tooltip-search.png" ]
 
 
-File: docowsQme.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
+File: docxIpc3k.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
 
 4.5 Filter Candidates
 =====================
@@ -858,7 +858,7 @@ states, use key binding ‘C-o’.
              [image src="./images/small/tooltip-filter.png" ]
 
 
-File: docowsQme.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
+File: docxIpc3k.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
 
 4.6 Quick Access a Candidate
 ============================
@@ -904,7 +904,7 @@ how to change quick-access hints faces.
          [image src="./images/small/tooltip-qa-faces-light.png" ]
 
 
-File: docowsQme.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
+File: docxIpc3k.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
 
 5 Backends
 **********
@@ -932,7 +932,7 @@ this user manual too.
 * Candidates Post-Processing::
 
 
-File: docowsQme.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
+File: docxIpc3k.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
 
 5.1 Backends Usage Basics
 =========================
@@ -966,7 +966,7 @@ can be assigned to key bindings, for example:
 Backends::.
 
 
-File: docowsQme.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
+File: docxIpc3k.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
 
 5.2 Grouped Backends
 ====================
@@ -1004,7 +1004,7 @@ example:
      (setq company-backends '((company-capf :with company-yasnippet)))
 
 
-File: docowsQme.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
+File: docxIpc3k.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
 
 5.3 Package Backends
 ====================
@@ -1034,7 +1034,7 @@ following:
 * Template Expansion::
 
 
-File: docowsQme.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
+File: docxIpc3k.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
 
 5.3.1 Code Completion
 ---------------------
@@ -1089,7 +1089,7 @@ File: docowsQme.info,  Node: Code Completion,  Next: Text Completion,  Up: Packa
      backend.
 
 
-File: docowsQme.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
+File: docxIpc3k.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
 
 5.3.2 Text Completion
 ---------------------
@@ -1177,7 +1177,7 @@ File: docowsQme.info,  Node: Text Completion,  Next: File Name Completion,  Prev
           another dictionary.
 
 
-File: docowsQme.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
+File: docxIpc3k.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
 
 5.3.3 File Name Completion
 --------------------------
@@ -1210,7 +1210,7 @@ File: docowsQme.info,  Node: File Name Completion,  Next: Template Expansion,  P
           directory.
 
 
-File: docowsQme.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
+File: docxIpc3k.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
 
 5.3.4 Template Expansion
 ------------------------
@@ -1230,7 +1230,7 @@ File: docowsQme.info,  Node: Template Expansion,  Prev: File Name Completion,  U
      system YASnippet (https://github.com/joaotavora/yasnippet).
 
 
-File: docowsQme.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
+File: docxIpc3k.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
 
 5.4 Candidates Post-Processing
 ==============================
@@ -1267,7 +1267,7 @@ listed below.
      case-insensitively.
 
 
-File: docowsQme.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
+File: docxIpc3k.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
 
 6 Troubleshooting
 *****************
@@ -1308,7 +1308,7 @@ attaching the following information:
      command: ‘M-x toggle-debug-on-error’ before reproducing the error.
 
 
-File: docowsQme.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
+File: docxIpc3k.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
 
 Index
 *****
@@ -1321,7 +1321,7 @@ Index
 * Concept Index::
 
 
-File: docowsQme.info,  Node: Key Index,  Next: Variable Index,  Up: Index
+File: docxIpc3k.info,  Node: Key Index,  Next: Variable Index,  Up: Index
 
 Key Index
 =========
@@ -1350,7 +1350,7 @@ Key Index
 * TAB <1>:                               Commands.             (line 25)
 
 
-File: docowsQme.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
+File: docxIpc3k.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
 
 Variable Index
 ==============
@@ -1415,7 +1415,7 @@ Variable Index
                                                               (line   6)
 
 
-File: docowsQme.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
+File: docxIpc3k.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
 
 Function Index
 ==============
@@ -1485,7 +1485,7 @@ Function Index
 * global-company-mode:                   Initial Setup.       (line  18)
 
 
-File: docowsQme.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
+File: docxIpc3k.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
 
 Concept Index
 =============
