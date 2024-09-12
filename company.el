@@ -1019,8 +1019,7 @@ keymap during active completions (`company-active-map'):
     (remove-hook 'pre-command-hook 'company-pre-command t)
     (remove-hook 'post-command-hook 'company-post-command t)
     (remove-hook 'yas-keymap-disable-hook 'company--active-p t)
-    (company-cancel)
-    (kill-local-variable 'company-point)))
+    (company-cancel)))
 
 (defcustom company-global-modes t
   "Modes for which `company-mode' mode is turned on by `global-company-mode'.
@@ -1216,13 +1215,13 @@ MAX-LEN is how far back to try to match the IDLE-BEGIN-AFTER-RE regexp."
     (nreverse chunks)))
 
 (defun company--capf-completions (prefix suffix table &optional pred meta)
-  (cl-letf* ((keep-prefix t)
+  (cl-letf* ((keep-suffix t)
              (wrapper
               (lambda (&rest args)
-                ;; If emacs22 style is used, prefix is ignored.
+                ;; If emacs22 style is used, suffix is ignored.
                 ;; That's the only popular completion style that does this.
                 (let ((res (apply #'completion-emacs22-all-completions args)))
-                  (when res (setq keep-prefix nil))
+                  (when res (setq keep-suffix nil))
                   res)))
              (completion-styles-alist (copy-tree completion-styles-alist))
              ((nth 2 (assoc 'emacs22 completion-styles-alist))
@@ -1237,7 +1236,7 @@ MAX-LEN is how far back to try to match the IDLE-BEGIN-AFTER-RE regexp."
              (bounds (completion-boundaries prefix table pred suffix)))
     (when last
       (setcdr last nil))
-    (unless keep-prefix
+    (unless keep-suffix
       (setcdr bounds 0))
     `((:completions . ,all)
       (:boundaries . ,(cons (substring prefix base-size)
@@ -1256,6 +1255,28 @@ MAX-LEN is how far back to try to match the IDLE-BEGIN-AFTER-RE regexp."
       (cons
        (substring (car res) 0 (cdr res))
        (substring (car res) (cdr res)))))))
+
+;; We store boundaries as markers because when the `unhide' frontend action is
+;; called, the completions are still being fetched. So the capf boundaries info
+;; can't be relied to be fresh by other means.
+(defun company--capf-boundaries-markers (string-pair &optional markers)
+  "STRING-PAIR is (PREFIX . SUFFIX) and MARKERS is a pair to reuse."
+  (when (or (not markers)
+            (stringp (car markers)))
+    (setq markers (cons (make-marker)
+                        (make-marker))))
+  (move-marker (car markers) (- (point) (length (car string-pair))))
+  (move-marker (cdr markers) (+ (point) (length (cdr string-pair))))
+  markers)
+
+(defun company--capf-boundaries (markers)
+  (let* ((beg (car markers))
+         (end (cdr markers))
+         res)
+    (when (> (point) end) (setq end (point)))
+    (setq res (cons (buffer-substring beg (point))
+                    (buffer-substring (point) end)))
+    res))
 
 (defvar company--cache (make-hash-table :test #'equal :size 10))
 
@@ -1375,7 +1396,6 @@ be recomputed when this value changes."
              (cl-return value)))))
       (`prefix (company--multi-prefix backends))
       (`adjust-boundaries
-       (defvar company-point)
        (let ((arg (car args)))
          (when (> (length arg) 0)
            (let* ((backend (or (get-text-property 0 'company-backend arg)
@@ -1383,13 +1403,6 @@ be recomputed when this value changes."
                   (entity (company--force-sync backend '(prefix) backend))
                   (prefix (company--prefix-str entity))
                   (suffix (company--suffix-str entity)))
-             ;; XXX: Working around the stuff in
-             ;; company-preview--refresh-prefix.
-             (when (> (point) company-point)
-               (setq prefix (substring prefix
-                                       0
-                                       (- (length prefix)
-                                          (- (point) company-point)))))
              (setq args (list arg prefix suffix))
              (or
               (apply backend command args)
@@ -1637,6 +1650,8 @@ be recomputed when this value changes."
 
 (defvar-local company-point nil)
 
+(defvar-local company-valid-point nil)
+
 (defvar company-timer nil)
 (defvar company-tooltip-timer nil)
 
@@ -1742,7 +1757,8 @@ update if FORCE-UPDATE."
         (format "%s-<%s>" base name)))))
 
 (defun company-update-candidates (candidates)
-  (setq company-candidates-length (length candidates))
+  (setq company-candidates-length (length candidates)
+        company-valid-point company-point)
   (if company-selection-changed
       ;; Try to restore the selection
       (let ((selected (and company-selection
@@ -1789,7 +1805,9 @@ update if FORCE-UPDATE."
                 (cl-return t)))))
         ;; No cache match, call the backend.
         (let ((refresh-timer (run-with-timer company-async-redisplay-delay
-                                             nil #'company--sneaky-refresh)))
+                                             nil
+                                             #'company--sneaky-refresh
+                                             prefix suffix)))
           (unwind-protect
               (setq candidates (company--preprocess-candidates
                                 (company--fetch-candidates prefix suffix)))
@@ -1840,8 +1858,12 @@ update if FORCE-UPDATE."
               (throw 'interrupted 'new-input)
             res-was))))))
 
-(defun company--sneaky-refresh ()
-  (when company-candidates (company-call-frontends 'unhide))
+(defun company--sneaky-refresh (prefix suffix)
+  (when company-candidates
+    (let* ((company-prefix prefix)
+           (company-suffix suffix))
+      (and prefix
+           (company-call-frontends 'unhide))))
   (let (inhibit-redisplay)
     (redisplay))
   (when company-candidates (company-call-frontends 'pre-command)))
@@ -2325,7 +2347,7 @@ doesn't cause any immediate changes to the buffer text."
       (let ((company-minimum-prefix-length 0)
             (company--manual-now t))
         (or (and company-candidates
-                 (= company-point (point)))
+                 (= company-valid-point (point)))
             (company-auto-begin)))
     (unless company-candidates
       (setq company--manual-action nil))))
@@ -2392,7 +2414,7 @@ For more details see `company-insertion-on-trigger' and
     (company-cancel 'non-unique))
    ((company-require-match-p)
     ;; Wrong incremental input, but required match.
-    (delete-char (- company-point (point)))
+    (delete-char (- company-valid-point (point)))
     (ding)
     (message "Matching input is required")
     company-candidates)
@@ -2432,7 +2454,10 @@ For more details see `company-insertion-on-trigger' and
                             (- company-point (length company-prefix))))
                 (company-calculate-candidates new-prefix ignore-case new-suffix)))))
     (cond
-     ((eq c 'new-input) ; Keep the old completions, company-point, prefix.
+     ((eq c 'new-input) ; Keep the old completions, but update the rest.
+      (setq company-prefix new-prefix
+            company-suffix new-suffix
+            company-point (point))
       t)
      ((and company-abort-on-unique-match
            (company--unique-match-p c new-prefix new-suffix ignore-case))
@@ -4466,26 +4491,14 @@ Delay is determined by `company-tooltip-idle-delay'."
     (delete-overlay company-preview-overlay)
     (setq company-preview-overlay nil)))
 
-(defun company-preview--refresh-prefix (boundaries)
-  (let ((prefix (car boundaries)))
-    (when prefix
-      (if (> (point) company-point)
-          (concat prefix (buffer-substring company-point (point)))
-        (substring prefix 0 (- (length prefix)
-                               (- company-point (point))))))))
-
 (defun company-preview-frontend (command)
   "`company-mode' frontend showing the selection as if it had been inserted."
   (pcase command
     (`pre-command (company-preview-hide))
     (`unhide
      (when company-selection
-       (let* ((current (nth company-selection company-candidates))
-              (boundaries (company--boundaries)))
-         (company-preview-show-at-point (point) current
-                                        (cons
-                                         (company-preview--refresh-prefix boundaries)
-                                         (cdr boundaries))))))
+       (let* ((current (nth company-selection company-candidates)))
+         (company-preview-show-at-point (point) current))))
     (`post-command
      (when company-selection
        (company-preview-show-at-point (point)
