@@ -114,12 +114,7 @@ so we can't just use the preceding variable instead.")
   (pcase command
     (`interactive (company-begin-backend 'company-capf))
     (`prefix
-     (let ((res (company--capf-data)))
-       (when res
-         (let ((length (plist-get (nthcdr 4 res) :company-prefix-length))
-               (prefix (buffer-substring-no-properties (nth 1 res) (point)))
-               (suffix (buffer-substring-no-properties (point) (nth 2 res))))
-           (list prefix suffix length)))))
+     (company-capf--prefix))
     (`candidates
      (company-capf--candidates arg (car rest)))
     (`sorted
@@ -160,13 +155,21 @@ so we can't just use the preceding variable instead.")
      (plist-get (nthcdr 4 (company--capf-data)) :company-require-match))
     (`init nil)      ;Don't bother: plenty of other ways to initialize the code.
     (`post-completion
-     (company--capf-post-completion arg))
+     (company-capf--post-completion arg))
     (`adjust-boundaries
      (company--capf-boundaries
       company-capf--current-boundaries))
     (`expand-common
      (company-capf--expand-common arg (car rest)))
     ))
+
+(defun company-capf--prefix ()
+  (let ((res (company--capf-data)))
+    (when res
+      (let ((length (plist-get (nthcdr 4 res) :company-prefix-length))
+            (prefix (buffer-substring-no-properties (nth 1 res) (point)))
+            (suffix (buffer-substring-no-properties (point) (nth 2 res))))
+        (list prefix suffix length)))))
 
 (defun company-capf--expand-common (prefix suffix)
   (let* ((data company-capf--current-completion-data)
@@ -228,7 +231,7 @@ so we can't just use the preceding variable instead.")
            (throw 'interrupted 'new-input))
       res)))
 
-(defun company--capf-post-completion (arg)
+(defun company-capf--post-completion (arg)
   (let* ((res company-capf--current-completion-data)
          (exit-function (plist-get (nthcdr 4 res) :exit-function))
          (table (nth 3 res)))
