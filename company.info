@@ -1,4 +1,4 @@
-This is docNjGNLt.info, produced by makeinfo version 6.8 from
+This is dociBJNK2.info, produced by makeinfo version 6.8 from
 company.texi.
 
 This user manual is for Company version 1.0.0 (21 September 2024).
@@ -15,7 +15,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docNjGNLt.info,  Node: Top,  Next: Overview,  Up: (dir)
+File: dociBJNK2.info,  Node: Top,  Next: Overview,  Up: (dir)
 
 Company
 *******
@@ -82,7 +82,7 @@ Backends
 
 
 
-File: docNjGNLt.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
+File: dociBJNK2.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
 
 1 Overview
 **********
@@ -99,7 +99,7 @@ writers, and scientists during code and text writing.
 * Structure::
 
 
-File: docNjGNLt.info,  Node: Terminology,  Next: Structure,  Up: Overview
+File: dociBJNK2.info,  Node: Terminology,  Next: Structure,  Up: Overview
 
 1.1 Terminology
 ===============
@@ -126,7 +126,7 @@ commitment to handling completion candidates and its extensible nature
 allowing it to cover a wide range of usage scenarios.
 
 
-File: docNjGNLt.info,  Node: Structure,  Prev: Terminology,  Up: Overview
+File: dociBJNK2.info,  Node: Structure,  Prev: Terminology,  Up: Overview
 
 1.2 Structure
 =============
@@ -160,7 +160,7 @@ initialization file (*note (emacs)Init File::):
      (add-hook 'after-init-hook 'company-tng-mode)
 
 
-File: docNjGNLt.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
+File: dociBJNK2.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
 
 2 Getting Started
 *****************
@@ -175,7 +175,7 @@ This chapter provides basic instructions for Company setup and usage.
 * Commands::
 
 
-File: docNjGNLt.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
+File: dociBJNK2.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
 
 2.1 Installation
 ================
@@ -187,7 +187,7 @@ form of both stable and development releases.  To install Company, type
 For more details on Emacs package archives, *note (emacs)Packages::.
 
 
-File: docNjGNLt.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
+File: dociBJNK2.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
 
 2.2 Initial Setup
 =================
@@ -209,7 +209,7 @@ To have Company always enabled for the following sessions, add the line
 (emacs)Init File::).
 
 
-File: docNjGNLt.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
+File: dociBJNK2.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
 
 2.3 Usage Basics
 ================
@@ -234,7 +234,7 @@ respectively key bindings ‘C-n’ and ‘C-p’, then do one of the following:
    • Hit ‘C-g’ to stop activity of Company.
 
 
-File: docNjGNLt.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
+File: dociBJNK2.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
 
 2.4 Commands
 ============
@@ -313,7 +313,7 @@ utilize ‘M-x describe-keymap <RET> company-active-map’ or
 ‘C-h f <RET> company-mode’.
 
 
-File: docNjGNLt.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
+File: dociBJNK2.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
 
 3 Customization
 ***************
@@ -330,7 +330,7 @@ approaches.
 * Configuration File::
 
 
-File: docNjGNLt.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
+File: dociBJNK2.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
 
 3.1 Customization Interface
 ===========================
@@ -346,7 +346,7 @@ For instructions on how to change the settings, *note (emacs)Changing a
 Variable::.
 
 
-File: docNjGNLt.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
+File: dociBJNK2.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
 
 3.2 Configuration File
 ======================
@@ -446,7 +446,7 @@ Company exposes the following life-cycle hooks:
  -- User Option: company-after-completion-hook
 
 
-File: docNjGNLt.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
+File: dociBJNK2.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
 
 4 Frontends
 ***********
@@ -475,7 +475,7 @@ displayed candidates can be searched, filtered, and quick-accessed.
 * Quick Access a Candidate::
 
 
-File: docNjGNLt.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
+File: dociBJNK2.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
 
 4.1 Tooltip Frontends
 =====================
@@ -729,7 +729,7 @@ image-types’.  Before compiling Emacs, make sure ‘librsvg’ is installed
 on your system.
 
 
-File: docNjGNLt.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
+File: dociBJNK2.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
 
 4.2 Preview Frontends
 =====================
@@ -768,7 +768,7 @@ The look of the preview is controlled by the following faces:
 Terminology::) may be shown in full after point.
 
 
-File: docNjGNLt.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
+File: dociBJNK2.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
 
 4.3 Echo Frontends
 ==================
@@ -809,7 +809,7 @@ To apply visual changes to the output of these frontends, configure the
 faces ‘company-echo’ and ‘company-echo-common’.
 
 
-File: docNjGNLt.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
+File: dociBJNK2.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
 
 4.4 Candidates Search
 =====================
@@ -844,7 +844,7 @@ Search matches are distinguished by the ‘company-tooltip-search’ and
              [image src="./images/small/tooltip-search.png" ]
 
 
-File: docNjGNLt.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
+File: dociBJNK2.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
 
 4.5 Filter Candidates
 =====================
@@ -863,7 +863,7 @@ states, use key binding ‘C-o’.
              [image src="./images/small/tooltip-filter.png" ]
 
 
-File: docNjGNLt.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
+File: dociBJNK2.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
 
 4.6 Quick Access a Candidate
 ============================
@@ -909,7 +909,7 @@ how to change quick-access hints faces.
          [image src="./images/small/tooltip-qa-faces-light.png" ]
 
 
-File: docNjGNLt.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
+File: dociBJNK2.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
 
 5 Backends
 **********
@@ -936,7 +936,7 @@ concepts are described in this user manual too.
 * Candidates Post-Processing::
 
 
-File: docNjGNLt.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
+File: dociBJNK2.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
 
 5.1 Backends Usage Basics
 =========================
@@ -972,7 +972,7 @@ can be assigned to key bindings, for example:
 Backends::.
 
 
-File: docNjGNLt.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
+File: dociBJNK2.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
 
 5.2 Grouped Backends
 ====================
@@ -1008,7 +1008,7 @@ example:
      (setq company-backends '((company-capf :with company-yasnippet)))
 
 
-File: docNjGNLt.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
+File: dociBJNK2.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
 
 5.3 Package Backends
 ====================
@@ -1038,7 +1038,7 @@ following:
 * Template Expansion::
 
 
-File: docNjGNLt.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
+File: dociBJNK2.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
 
 5.3.1 Code Completion
 ---------------------
@@ -1153,7 +1153,7 @@ File: docNjGNLt.info,  Node: Code Completion,  Next: Text Completion,  Up: Packa
      completion styles with this backend.  The default value is nil.
 
 
-File: docNjGNLt.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
+File: dociBJNK2.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
 
 5.3.2 Text Completion
 ---------------------
@@ -1241,7 +1241,7 @@ File: docNjGNLt.info,  Node: Text Completion,  Next: File Name Completion,  Prev
           another dictionary.
 
 
-File: docNjGNLt.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
+File: dociBJNK2.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
 
 5.3.3 File Name Completion
 --------------------------
@@ -1274,7 +1274,7 @@ File: docNjGNLt.info,  Node: File Name Completion,  Next: Template Expansion,  P
           directory.
 
 
-File: docNjGNLt.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
+File: dociBJNK2.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
 
 5.3.4 Template Expansion
 ------------------------
@@ -1294,7 +1294,7 @@ File: docNjGNLt.info,  Node: Template Expansion,  Prev: File Name Completion,  U
      system YASnippet (https://github.com/joaotavora/yasnippet).
 
 
-File: docNjGNLt.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
+File: dociBJNK2.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
 
 5.4 Candidates Post-Processing
 ==============================
@@ -1331,7 +1331,7 @@ listed below.
      case-insensitively.
 
 
-File: docNjGNLt.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
+File: dociBJNK2.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
 
 6 Troubleshooting
 *****************
@@ -1372,7 +1372,7 @@ attaching the following information:
      command: ‘M-x toggle-debug-on-error’ before reproducing the error.
 
 
-File: docNjGNLt.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
+File: dociBJNK2.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
 
 Index
 *****
@@ -1385,7 +1385,7 @@ Index
 * Concept Index::
 
 
-File: docNjGNLt.info,  Node: Key Index,  Next: Variable Index,  Up: Index
+File: dociBJNK2.info,  Node: Key Index,  Next: Variable Index,  Up: Index
 
 Key Index
 =========
@@ -1414,7 +1414,7 @@ Key Index
 * TAB <1>:                               Commands.             (line 25)
 
 
-File: docNjGNLt.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
+File: dociBJNK2.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
 
 Variable Index
 ==============
@@ -1489,7 +1489,7 @@ Variable Index
                                                               (line   6)
 
 
-File: docNjGNLt.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
+File: dociBJNK2.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
 
 Function Index
 ==============
@@ -1559,7 +1559,7 @@ Function Index
 * global-company-mode:                   Initial Setup.       (line  18)
 
 
-File: docNjGNLt.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
+File: dociBJNK2.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
 
 Concept Index
 =============
