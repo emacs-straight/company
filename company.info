@@ -1,4 +1,4 @@
-This is dociBJNK2.info, produced by makeinfo version 6.8 from
+This is docSnEWCe.info, produced by makeinfo version 6.8 from
 company.texi.
 
 This user manual is for Company version 1.0.0 (21 September 2024).
@@ -15,7 +15,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: dociBJNK2.info,  Node: Top,  Next: Overview,  Up: (dir)
+File: docSnEWCe.info,  Node: Top,  Next: Overview,  Up: (dir)
 
 Company
 *******
@@ -82,7 +82,7 @@ Backends
 
 
 
-File: dociBJNK2.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
+File: docSnEWCe.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
 
 1 Overview
 **********
@@ -99,7 +99,7 @@ writers, and scientists during code and text writing.
 * Structure::
 
 
-File: dociBJNK2.info,  Node: Terminology,  Next: Structure,  Up: Overview
+File: docSnEWCe.info,  Node: Terminology,  Next: Structure,  Up: Overview
 
 1.1 Terminology
 ===============
@@ -126,7 +126,7 @@ commitment to handling completion candidates and its extensible nature
 allowing it to cover a wide range of usage scenarios.
 
 
-File: dociBJNK2.info,  Node: Structure,  Prev: Terminology,  Up: Overview
+File: docSnEWCe.info,  Node: Structure,  Prev: Terminology,  Up: Overview
 
 1.2 Structure
 =============
@@ -160,7 +160,7 @@ initialization file (*note (emacs)Init File::):
      (add-hook 'after-init-hook 'company-tng-mode)
 
 
-File: dociBJNK2.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
+File: docSnEWCe.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
 
 2 Getting Started
 *****************
@@ -175,7 +175,7 @@ This chapter provides basic instructions for Company setup and usage.
 * Commands::
 
 
-File: dociBJNK2.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
+File: docSnEWCe.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
 
 2.1 Installation
 ================
@@ -187,7 +187,7 @@ form of both stable and development releases.  To install Company, type
 For more details on Emacs package archives, *note (emacs)Packages::.
 
 
-File: dociBJNK2.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
+File: docSnEWCe.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
 
 2.2 Initial Setup
 =================
@@ -209,7 +209,7 @@ To have Company always enabled for the following sessions, add the line
 (emacs)Init File::).
 
 
-File: dociBJNK2.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
+File: docSnEWCe.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
 
 2.3 Usage Basics
 ================
@@ -234,7 +234,7 @@ respectively key bindings ‘C-n’ and ‘C-p’, then do one of the following:
    • Hit ‘C-g’ to stop activity of Company.
 
 
-File: dociBJNK2.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
+File: docSnEWCe.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
 
 2.4 Commands
 ============
@@ -255,6 +255,7 @@ commands of the out-of-the-box Company.
 ‘RET’
 ‘<return>’
      Insert the selected candidate (‘company-complete-selection’).
+     Restart completion if a new field is entered.
 
 ‘TAB’
 ‘<tab>’
@@ -313,7 +314,7 @@ utilize ‘M-x describe-keymap <RET> company-active-map’ or
 ‘C-h f <RET> company-mode’.
 
 
-File: dociBJNK2.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
+File: docSnEWCe.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
 
 3 Customization
 ***************
@@ -330,7 +331,7 @@ approaches.
 * Configuration File::
 
 
-File: dociBJNK2.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
+File: docSnEWCe.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
 
 3.1 Customization Interface
 ===========================
@@ -346,7 +347,7 @@ For instructions on how to change the settings, *note (emacs)Changing a
 Variable::.
 
 
-File: dociBJNK2.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
+File: docSnEWCe.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
 
 3.2 Configuration File
 ======================
@@ -446,7 +447,7 @@ Company exposes the following life-cycle hooks:
  -- User Option: company-after-completion-hook
 
 
-File: dociBJNK2.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
+File: docSnEWCe.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
 
 4 Frontends
 ***********
@@ -475,7 +476,7 @@ displayed candidates can be searched, filtered, and quick-accessed.
 * Quick Access a Candidate::
 
 
-File: dociBJNK2.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
+File: docSnEWCe.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
 
 4.1 Tooltip Frontends
 =====================
@@ -729,7 +730,7 @@ image-types’.  Before compiling Emacs, make sure ‘librsvg’ is installed
 on your system.
 
 
-File: dociBJNK2.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
+File: docSnEWCe.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
 
 4.2 Preview Frontends
 =====================
@@ -768,7 +769,7 @@ The look of the preview is controlled by the following faces:
 Terminology::) may be shown in full after point.
 
 
-File: dociBJNK2.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
+File: docSnEWCe.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
 
 4.3 Echo Frontends
 ==================
@@ -809,7 +810,7 @@ To apply visual changes to the output of these frontends, configure the
 faces ‘company-echo’ and ‘company-echo-common’.
 
 
-File: dociBJNK2.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
+File: docSnEWCe.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
 
 4.4 Candidates Search
 =====================
@@ -844,7 +845,7 @@ Search matches are distinguished by the ‘company-tooltip-search’ and
              [image src="./images/small/tooltip-search.png" ]
 
 
-File: dociBJNK2.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
+File: docSnEWCe.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
 
 4.5 Filter Candidates
 =====================
@@ -863,7 +864,7 @@ states, use key binding ‘C-o’.
              [image src="./images/small/tooltip-filter.png" ]
 
 
-File: dociBJNK2.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
+File: docSnEWCe.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
 
 4.6 Quick Access a Candidate
 ============================
@@ -909,7 +910,7 @@ how to change quick-access hints faces.
          [image src="./images/small/tooltip-qa-faces-light.png" ]
 
 
-File: dociBJNK2.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
+File: docSnEWCe.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
 
 5 Backends
 **********
@@ -936,7 +937,7 @@ concepts are described in this user manual too.
 * Candidates Post-Processing::
 
 
-File: dociBJNK2.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
+File: docSnEWCe.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
 
 5.1 Backends Usage Basics
 =========================
@@ -972,7 +973,7 @@ can be assigned to key bindings, for example:
 Backends::.
 
 
-File: dociBJNK2.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
+File: docSnEWCe.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
 
 5.2 Grouped Backends
 ====================
@@ -1008,7 +1009,7 @@ example:
      (setq company-backends '((company-capf :with company-yasnippet)))
 
 
-File: dociBJNK2.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
+File: docSnEWCe.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
 
 5.3 Package Backends
 ====================
@@ -1038,7 +1039,7 @@ following:
 * Template Expansion::
 
 
-File: dociBJNK2.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
+File: docSnEWCe.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
 
 5.3.1 Code Completion
 ---------------------
@@ -1153,7 +1154,7 @@ File: dociBJNK2.info,  Node: Code Completion,  Next: Text Completion,  Up: Packa
      completion styles with this backend.  The default value is nil.
 
 
-File: dociBJNK2.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
+File: docSnEWCe.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
 
 5.3.2 Text Completion
 ---------------------
@@ -1241,7 +1242,7 @@ File: dociBJNK2.info,  Node: Text Completion,  Next: File Name Completion,  Prev
           another dictionary.
 
 
-File: dociBJNK2.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
+File: docSnEWCe.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
 
 5.3.3 File Name Completion
 --------------------------
@@ -1274,7 +1275,7 @@ File: dociBJNK2.info,  Node: File Name Completion,  Next: Template Expansion,  P
           directory.
 
 
-File: dociBJNK2.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
+File: docSnEWCe.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
 
 5.3.4 Template Expansion
 ------------------------
@@ -1294,7 +1295,7 @@ File: dociBJNK2.info,  Node: Template Expansion,  Prev: File Name Completion,  U
      system YASnippet (https://github.com/joaotavora/yasnippet).
 
 
-File: dociBJNK2.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
+File: docSnEWCe.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
 
 5.4 Candidates Post-Processing
 ==============================
@@ -1331,7 +1332,7 @@ listed below.
      case-insensitively.
 
 
-File: dociBJNK2.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
+File: docSnEWCe.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
 
 6 Troubleshooting
 *****************
@@ -1372,7 +1373,7 @@ attaching the following information:
      command: ‘M-x toggle-debug-on-error’ before reproducing the error.
 
 
-File: dociBJNK2.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
+File: docSnEWCe.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
 
 Index
 *****
@@ -1385,7 +1386,7 @@ Index
 * Concept Index::
 
 
-File: dociBJNK2.info,  Node: Key Index,  Next: Variable Index,  Up: Index
+File: docSnEWCe.info,  Node: Key Index,  Next: Variable Index,  Up: Index
 
 Key Index
 =========
@@ -1394,10 +1395,10 @@ Key Index
 * Menu:
 
 * C-g:                                   Usage Basics.         (line 23)
-* C-g <1>:                               Commands.             (line 30)
+* C-g <1>:                               Commands.             (line 31)
 * C-g <2>:                               Candidates Search.    (line 11)
 * C-g <3>:                               Filter Candidates.    (line 14)
-* C-h:                                   Commands.             (line 34)
+* C-h:                                   Commands.             (line 35)
 * C-M-s:                                 Filter Candidates.    (line  6)
 * C-n:                                   Usage Basics.         (line 12)
 * C-n <1>:                               Commands.             (line 11)
@@ -1405,16 +1406,16 @@ Key Index
 * C-p:                                   Usage Basics.         (line 12)
 * C-p <1>:                               Commands.             (line 16)
 * C-s:                                   Candidates Search.    (line  6)
-* C-w:                                   Commands.             (line 41)
+* C-w:                                   Commands.             (line 42)
 * M-<digit>:                             Quick Access a Candidate.
                                                                (line  6)
 * RET:                                   Usage Basics.         (line 15)
 * RET <1>:                               Commands.             (line 21)
 * TAB:                                   Usage Basics.         (line 17)
-* TAB <1>:                               Commands.             (line 25)
+* TAB <1>:                               Commands.             (line 26)
 
 
-File: dociBJNK2.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
+File: docSnEWCe.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
 
 Variable Index
 ==============
@@ -1489,7 +1490,7 @@ Variable Index
                                                               (line   6)
 
 
-File: dociBJNK2.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
+File: docSnEWCe.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
 
 Function Index
 ==============
@@ -1498,13 +1499,13 @@ Function Index
 * Menu:
 
 * company-abbrev:                        Template Expansion.  (line   6)
-* company-abort:                         Commands.            (line  30)
+* company-abort:                         Commands.            (line  31)
 * company-begin-backend:                 Backends Usage Basics.
                                                               (line  24)
 * company-capf:                          Code Completion.     (line   6)
 * company-clang:                         Code Completion.     (line  72)
 * company-complete:                      Usage Basics.        (line  10)
-* company-complete-common:               Commands.            (line  25)
+* company-complete-common:               Commands.            (line  26)
 * company-complete-selection:            Commands.            (line  21)
 * company-dabbrev:                       Text Completion.     (line   6)
 * company-dabbrev-code:                  Code Completion.     (line  33)
@@ -1541,8 +1542,8 @@ Function Index
 * company-select-previous:               Commands.            (line  16)
 * company-select-previous-or-abort:      Commands.            (line  16)
 * company-semantic:                      Code Completion.     (line  90)
-* company-show-doc-buffer:               Commands.            (line  34)
-* company-show-location:                 Commands.            (line  41)
+* company-show-doc-buffer:               Commands.            (line  35)
+* company-show-location:                 Commands.            (line  42)
 * company-sort-by-backend-importance:    Candidates Post-Processing.
                                                               (line  27)
 * company-sort-by-occurrence:            Candidates Post-Processing.
@@ -1559,7 +1560,7 @@ Function Index
 * global-company-mode:                   Initial Setup.       (line  18)
 
 
-File: dociBJNK2.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
+File: docSnEWCe.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
 
 Concept Index
 =============
@@ -1569,7 +1570,7 @@ Concept Index
 
 * abbrev:                                Template Expansion.  (line   6)
 * abort:                                 Usage Basics.        (line  23)
-* abort <1>:                             Commands.            (line  30)
+* abort <1>:                             Commands.            (line  31)
 * activate:                              Initial Setup.       (line   8)
 * active backend:                        Backends Usage Basics.
                                                               (line  13)
@@ -1593,7 +1594,7 @@ Concept Index
 * bug <1>:                               Troubleshooting.     (line  25)
 * bundled backends:                      Package Backends.    (line   6)
 * cancel:                                Usage Basics.        (line  23)
-* cancel <1>:                            Commands.            (line  30)
+* cancel <1>:                            Commands.            (line  31)
 * candidate:                             Terminology.         (line  10)
 * candidate <1>:                         Usage Basics.        (line  12)
 * candidate <2>:                         Usage Basics.        (line  15)
@@ -1602,7 +1603,7 @@ Concept Index
 * color <1>:                             Quick Access a Candidate.
                                                               (line  34)
 * common part:                           Usage Basics.        (line  17)
-* common part <1>:                       Commands.            (line  25)
+* common part <1>:                       Commands.            (line  26)
 * common part <2>:                       Preview Frontends.   (line   6)
 * company-echo:                          Echo Frontends.      (line   6)
 * company-preview:                       Preview Frontends.   (line   6)
@@ -1645,9 +1646,9 @@ Concept Index
                                                               (line  25)
 * custom <9>:                            Quick Access a Candidate.
                                                               (line  34)
-* definition:                            Commands.            (line  41)
+* definition:                            Commands.            (line  42)
 * distribution:                          Installation.        (line   6)
-* doc:                                   Commands.            (line  34)
+* doc:                                   Commands.            (line  35)
 * duplicate:                             Candidates Post-Processing.
                                                               (line   6)
 * echo:                                  Echo Frontends.      (line   6)
@@ -1668,7 +1669,7 @@ Concept Index
                                                               (line  34)
 * filter:                                Filter Candidates.   (line   6)
 * finish:                                Usage Basics.        (line  23)
-* finish <1>:                            Commands.            (line  30)
+* finish <1>:                            Commands.            (line  31)
 * font:                                  Tooltip Frontends.   (line 222)
 * font <1>:                              Quick Access a Candidate.
                                                               (line  34)
@@ -1689,7 +1690,7 @@ Concept Index
 * issue:                                 Troubleshooting.     (line   6)
 * issue tracker:                         Troubleshooting.     (line  25)
 * kind:                                  Tooltip Frontends.   (line 151)
-* location:                              Commands.            (line  41)
+* location:                              Commands.            (line  42)
 * manual:                                Initial Setup.       (line   8)
 * manual <1>:                            Usage Basics.        (line  10)
 * margin:                                Tooltip Frontends.   (line 140)
@@ -1711,7 +1712,7 @@ Concept Index
 * quick-access:                          Quick Access a Candidate.
                                                               (line   6)
 * quit:                                  Usage Basics.        (line  23)
-* quit <1>:                              Commands.            (line  30)
+* quit <1>:                              Commands.            (line  31)
 * search:                                Candidates Search.   (line   6)
 * select:                                Usage Basics.        (line  12)
 * select <1>:                            Commands.            (line  11)
@@ -1720,7 +1721,7 @@ Concept Index
 * sort:                                  Candidates Post-Processing.
                                                               (line   6)
 * stop:                                  Usage Basics.        (line  23)
-* stop <1>:                              Commands.            (line  30)
+* stop <1>:                              Commands.            (line  31)
 * TAB:                                   Structure.           (line  26)
 * Tab and Go:                            Structure.           (line  26)
 * template:                              Template Expansion.  (line   6)
@@ -1742,35 +1743,35 @@ Node: Installation5484
 Node: Initial Setup5869
 Node: Usage Basics6719
 Node: Commands7699
-Ref: Commands-Footnote-110145
-Node: Customization10312
-Node: Customization Interface10786
-Node: Configuration File11321
-Node: Frontends16130
-Node: Tooltip Frontends17101
-Ref: Tooltip Frontends-Footnote-127817
-Node: Preview Frontends28054
-Ref: Preview Frontends-Footnote-129314
-Node: Echo Frontends29441
-Node: Candidates Search30976
-Node: Filter Candidates32312
-Node: Quick Access a Candidate33094
-Node: Backends34714
-Node: Backends Usage Basics35746
-Ref: Backends Usage Basics-Footnote-137180
-Node: Grouped Backends37264
-Node: Package Backends38777
-Node: Code Completion39708
-Node: Text Completion45237
-Node: File Name Completion49673
-Node: Template Expansion51223
-Node: Candidates Post-Processing51944
-Node: Troubleshooting53423
-Node: Index55098
-Node: Key Index55263
-Node: Variable Index56764
-Node: Function Index61619
-Node: Concept Index66102
+Ref: Commands-Footnote-110196
+Node: Customization10363
+Node: Customization Interface10837
+Node: Configuration File11372
+Node: Frontends16181
+Node: Tooltip Frontends17152
+Ref: Tooltip Frontends-Footnote-127868
+Node: Preview Frontends28105
+Ref: Preview Frontends-Footnote-129365
+Node: Echo Frontends29492
+Node: Candidates Search31027
+Node: Filter Candidates32363
+Node: Quick Access a Candidate33145
+Node: Backends34765
+Node: Backends Usage Basics35797
+Ref: Backends Usage Basics-Footnote-137231
+Node: Grouped Backends37315
+Node: Package Backends38828
+Node: Code Completion39759
+Node: Text Completion45288
+Node: File Name Completion49724
+Node: Template Expansion51274
+Node: Candidates Post-Processing51995
+Node: Troubleshooting53474
+Node: Index55149
+Node: Key Index55314
+Node: Variable Index56815
+Node: Function Index61670
+Node: Concept Index66153
 
 End Tag Table
 
