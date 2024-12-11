@@ -1,7 +1,8 @@
-This is docHiO1ZK.info, produced by makeinfo version 6.8 from
+This is docbPAHaS.info, produced by makeinfo version 6.8 from
 company.texi.
 
-This user manual is for Company version 1.0.2 (5 November 2024).
+This user manual is for Company version 1.0.3-snapshot
+(7 December 2024).
 
 Copyright © 2021-2024 Free Software Foundation, Inc.
 
@@ -15,7 +16,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docHiO1ZK.info,  Node: Top,  Next: Overview,  Up: (dir)
+File: docbPAHaS.info,  Node: Top,  Next: Overview,  Up: (dir)
 
 Company
 *******
@@ -26,7 +27,8 @@ The goal of this document is to lay out the foundational knowledge of
 the package, so that the readers of the manual could competently start
 adapting Company to their needs and preferences.
 
-This user manual is for Company version 1.0.2 (5 November 2024).
+This user manual is for Company version 1.0.3-snapshot
+(7 December 2024).
 
 Copyright © 2021-2024 Free Software Foundation, Inc.
 
@@ -82,7 +84,7 @@ Backends
 
 
 
-File: docHiO1ZK.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
+File: docbPAHaS.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
 
 1 Overview
 **********
@@ -99,7 +101,7 @@ writers, and scientists during code and text writing.
 * Structure::
 
 
-File: docHiO1ZK.info,  Node: Terminology,  Next: Structure,  Up: Overview
+File: docbPAHaS.info,  Node: Terminology,  Next: Structure,  Up: Overview
 
 1.1 Terminology
 ===============
@@ -126,7 +128,7 @@ commitment to handling completion candidates and its extensible nature
 allowing it to cover a wide range of usage scenarios.
 
 
-File: docHiO1ZK.info,  Node: Structure,  Prev: Terminology,  Up: Overview
+File: docbPAHaS.info,  Node: Structure,  Prev: Terminology,  Up: Overview
 
 1.2 Structure
 =============
@@ -160,7 +162,7 @@ initialization file (*note (emacs)Init File::):
      (add-hook 'after-init-hook 'company-tng-mode)
 
 
-File: docHiO1ZK.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
+File: docbPAHaS.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
 
 2 Getting Started
 *****************
@@ -175,7 +177,7 @@ This chapter provides basic instructions for Company setup and usage.
 * Commands::
 
 
-File: docHiO1ZK.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
+File: docbPAHaS.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
 
 2.1 Installation
 ================
@@ -187,7 +189,7 @@ form of both stable and development releases.  To install Company, type
 For more details on Emacs package archives, *note (emacs)Packages::.
 
 
-File: docHiO1ZK.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
+File: docbPAHaS.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
 
 2.2 Initial Setup
 =================
@@ -209,7 +211,7 @@ To have Company always enabled for the following sessions, add the line
 (emacs)Init File::).
 
 
-File: docHiO1ZK.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
+File: docbPAHaS.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
 
 2.3 Usage Basics
 ================
@@ -234,7 +236,7 @@ respectively key bindings ‘C-n’ and ‘C-p’, then do one of the following:
    • Hit ‘C-g’ to stop activity of Company.
 
 
-File: docHiO1ZK.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
+File: docbPAHaS.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
 
 2.4 Commands
 ============
@@ -308,7 +310,7 @@ utilize ‘M-x describe-keymap <RET> company-active-map’ or
 ‘C-h f <RET> company-mode’.
 
 
-File: docHiO1ZK.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
+File: docbPAHaS.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
 
 3 Customization
 ***************
@@ -325,7 +327,7 @@ approaches.
 * Configuration File::
 
 
-File: docHiO1ZK.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
+File: docbPAHaS.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
 
 3.1 Customization Interface
 ===========================
@@ -341,7 +343,7 @@ For instructions on how to change the settings, *note (emacs)Changing a
 Variable::.
 
 
-File: docHiO1ZK.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
+File: docbPAHaS.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
 
 3.2 Configuration File
 ======================
@@ -441,7 +443,7 @@ Company exposes the following life-cycle hooks:
  -- User Option: company-after-completion-hook
 
 
-File: docHiO1ZK.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
+File: docbPAHaS.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
 
 4 Frontends
 ***********
@@ -470,7 +472,7 @@ displayed candidates can be searched, filtered, and quick-accessed.
 * Quick Access a Candidate::
 
 
-File: docHiO1ZK.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
+File: docbPAHaS.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
 
 4.1 Tooltip Frontends
 =====================
@@ -724,7 +726,7 @@ image-types’.  Before compiling Emacs, make sure ‘librsvg’ is installed
 on your system.
 
 
-File: docHiO1ZK.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
+File: docbPAHaS.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
 
 4.2 Preview Frontends
 =====================
@@ -763,7 +765,7 @@ The look of the preview is controlled by the following faces:
 Terminology::) may be shown in full after point.
 
 
-File: docHiO1ZK.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
+File: docbPAHaS.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
 
 4.3 Echo Frontends
 ==================
@@ -804,7 +806,7 @@ To apply visual changes to the output of these frontends, configure the
 faces ‘company-echo’ and ‘company-echo-common’.
 
 
-File: docHiO1ZK.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
+File: docbPAHaS.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
 
 4.4 Candidates Search
 =====================
@@ -839,7 +841,7 @@ Search matches are distinguished by the ‘company-tooltip-search’ and
              [image src="./images/small/tooltip-search.png" ]
 
 
-File: docHiO1ZK.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
+File: docbPAHaS.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
 
 4.5 Filter Candidates
 =====================
@@ -858,7 +860,7 @@ states, use key binding ‘C-o’.
              [image src="./images/small/tooltip-filter.png" ]
 
 
-File: docHiO1ZK.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
+File: docbPAHaS.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
 
 4.6 Quick Access a Candidate
 ============================
@@ -904,7 +906,7 @@ how to change quick-access hints faces.
          [image src="./images/small/tooltip-qa-faces-light.png" ]
 
 
-File: docHiO1ZK.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
+File: docbPAHaS.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
 
 5 Backends
 **********
@@ -931,7 +933,7 @@ concepts are described in this user manual too.
 * Candidates Post-Processing::
 
 
-File: docHiO1ZK.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
+File: docbPAHaS.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
 
 5.1 Backends Usage Basics
 =========================
@@ -967,7 +969,7 @@ can be assigned to key bindings, for example:
 Backends::.
 
 
-File: docHiO1ZK.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
+File: docbPAHaS.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
 
 5.2 Grouped Backends
 ====================
@@ -1003,7 +1005,7 @@ example:
      (setq company-backends '((company-capf :with company-yasnippet)))
 
 
-File: docHiO1ZK.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
+File: docbPAHaS.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
 
 5.3 Package Backends
 ====================
@@ -1033,7 +1035,7 @@ following:
 * Template Expansion::
 
 
-File: docHiO1ZK.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
+File: docbPAHaS.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
 
 5.3.1 Code Completion
 ---------------------
@@ -1148,7 +1150,7 @@ File: docHiO1ZK.info,  Node: Code Completion,  Next: Text Completion,  Up: Packa
      completion styles with this backend.  The default value is nil.
 
 
-File: docHiO1ZK.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
+File: docbPAHaS.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
 
 5.3.2 Text Completion
 ---------------------
@@ -1236,7 +1238,7 @@ File: docHiO1ZK.info,  Node: Text Completion,  Next: File Name Completion,  Prev
           another dictionary.
 
 
-File: docHiO1ZK.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
+File: docbPAHaS.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
 
 5.3.3 File Name Completion
 --------------------------
@@ -1269,7 +1271,7 @@ File: docHiO1ZK.info,  Node: File Name Completion,  Next: Template Expansion,  P
           directory.
 
 
-File: docHiO1ZK.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
+File: docbPAHaS.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
 
 5.3.4 Template Expansion
 ------------------------
@@ -1289,21 +1291,47 @@ File: docHiO1ZK.info,  Node: Template Expansion,  Prev: File Name Completion,  U
      system YASnippet (https://github.com/joaotavora/yasnippet).
 
 
-File: docHiO1ZK.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
+File: docbPAHaS.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
 
 5.4 Candidates Post-Processing
 ==============================
 
-A list of completion candidates, supplied by a backend, can be
-additionally manipulated (reorganized, reduced, sorted, etc) before its
-output.  This is done by adding a processing function name to the user
-option ‘company-transformers’ list, for example:
+A list of completion candidates supplied by backends can be manipulated
+before output: reorganized, reduced, sorted, etc.  To apply adjustments,
+add a processing function name to the user option ‘company-transformers’
+list.
 
+The transformer functions are called in a sequence, each with the return
+value of the previous one.  The first function receives a sorted list of
+distinct completion candidates.  Note that the default sorting behavior
+may be overridden by backends and influenced by the use of the keyword
+‘:separate’ in the grouped backends list (*note Grouped Backends::).
+
+Since Company does not treat candidates with differing annotations as
+duplicates, it may sometimes be desirable to condense completion lists
+containing such entries.  In the example below, post-processing begins
+with their removal.  Then, the weighted ordering of the candidates is
+performed.
+
+     ;; Set grouped backends.
+     (setq company-backends '((company-capf company-dabbrev-code)))
+
+     ;; Apply post-processing.
      (setq company-transformers '(delete-consecutive-dups
                                   company-sort-by-occurrence))
 
-Company is bundled with several such transformer functions.  They are
-listed below.
+If a grouped backend contains the keyword ‘:separate’, you can use the
+‘delete-dups’ function instead.
+
+     ;; Set grouped backends.
+     (setq company-backends
+           '((:separate company-capf company-dabbrev-code)))
+
+     ;; Apply post-processing.
+     (setq company-transformers '(delete-dups
+                                  company-sort-by-occurrence))
+
+Company is bundled with several transformer functions.
 
  -- Function: company-sort-by-occurrence
      Sorts candidates using ‘company-occurrence-weight-function’
@@ -1326,7 +1354,7 @@ listed below.
      case-insensitively.
 
 
-File: docHiO1ZK.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
+File: docbPAHaS.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
 
 6 Troubleshooting
 *****************
@@ -1367,7 +1395,7 @@ attaching the following information:
      command: ‘M-x toggle-debug-on-error’ before reproducing the error.
 
 
-File: docHiO1ZK.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
+File: docbPAHaS.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
 
 Index
 *****
@@ -1380,7 +1408,7 @@ Index
 * Concept Index::
 
 
-File: docHiO1ZK.info,  Node: Key Index,  Next: Variable Index,  Up: Index
+File: docbPAHaS.info,  Node: Key Index,  Next: Variable Index,  Up: Index
 
 Key Index
 =========
@@ -1409,7 +1437,7 @@ Key Index
 * TAB <1>:                               Commands.             (line 26)
 
 
-File: docHiO1ZK.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
+File: docbPAHaS.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
 
 Variable Index
 ==============
@@ -1459,7 +1487,7 @@ Variable Index
 * company-minimum-prefix-length:         Configuration File.  (line   9)
 * company-mode:                          Initial Setup.       (line   6)
 * company-occurrence-weight-function:    Candidates Post-Processing.
-                                                              (line  21)
+                                                              (line  47)
 * company-require-match:                 Configuration File.  (line  55)
 * company-search-regexp-function:        Candidates Search.   (line  13)
 * company-selection-wrap-around:         Configuration File.  (line  47)
@@ -1484,7 +1512,7 @@ Variable Index
                                                               (line   6)
 
 
-File: docHiO1ZK.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
+File: docbPAHaS.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
 
 Function Index
 ==============
@@ -1542,11 +1570,11 @@ Function Index
 * company-show-doc-buffer:               Commands.            (line  38)
 * company-show-location:                 Commands.            (line  45)
 * company-sort-by-backend-importance:    Candidates Post-Processing.
-                                                              (line  27)
+                                                              (line  53)
 * company-sort-by-occurrence:            Candidates Post-Processing.
-                                                              (line  17)
+                                                              (line  43)
 * company-sort-prefer-same-case-prefix:  Candidates Post-Processing.
-                                                              (line  33)
+                                                              (line  59)
 * company-tempo:                         Template Expansion.  (line  11)
 * company-text-icons-margin:             Tooltip Frontends.   (line 175)
 * company-tng-frontend:                  Structure.           (line  26)
@@ -1557,7 +1585,7 @@ Function Index
 * global-company-mode:                   Initial Setup.       (line  18)
 
 
-File: docHiO1ZK.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
+File: docbPAHaS.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
 
 Concept Index
 =============
@@ -1565,6 +1593,12 @@ Concept Index
  [index ]
 * Menu:
 
+* :separate:                             Grouped Backends.    (line  14)
+* :separate <1>:                         Candidates Post-Processing.
+                                                              (line  11)
+* :separate <2>:                         Candidates Post-Processing.
+                                                              (line  30)
+* :with:                                 Grouped Backends.    (line  25)
 * abbrev:                                Template Expansion.  (line   6)
 * abort:                                 Usage Basics.        (line  23)
 * abort <1>:                             Commands.            (line  34)
@@ -1573,6 +1607,8 @@ Concept Index
                                                               (line  13)
 * active backend <1>:                    Troubleshooting.     (line  14)
 * annotation:                            Tooltip Frontends.   (line  52)
+* annotation <1>:                        Candidates Post-Processing.
+                                                              (line  17)
 * auto-start:                            Initial Setup.       (line  13)
 * backend:                               Structure.           (line   6)
 * backend <1>:                           Structure.           (line  10)
@@ -1586,6 +1622,8 @@ Concept Index
                                                               (line   6)
 * backends <2>:                          Grouped Backends.    (line   6)
 * backends <3>:                          Package Backends.    (line   6)
+* backends <4>:                          Candidates Post-Processing.
+                                                              (line  11)
 * basics:                                Usage Basics.        (line   6)
 * bug:                                   Troubleshooting.     (line   6)
 * bug <1>:                               Troubleshooting.     (line  25)
@@ -1646,8 +1684,10 @@ Concept Index
 * definition:                            Commands.            (line  45)
 * distribution:                          Installation.        (line   6)
 * doc:                                   Commands.            (line  38)
-* duplicate:                             Candidates Post-Processing.
-                                                              (line   6)
+* duplicates:                            Candidates Post-Processing.
+                                                              (line  17)
+* duplicates <1>:                        Candidates Post-Processing.
+                                                              (line  30)
 * echo:                                  Echo Frontends.      (line   6)
 * enable:                                Initial Setup.       (line   8)
 * error:                                 Troubleshooting.     (line   6)
@@ -1674,6 +1714,8 @@ Concept Index
 * frontend <1>:                          Structure.           (line  10)
 * frontends:                             Frontends.           (line   6)
 * grouped backends:                      Grouped Backends.    (line   6)
+* grouped backends <1>:                  Candidates Post-Processing.
+                                                              (line  11)
 * icon:                                  Tooltip Frontends.   (line 151)
 * install:                               Installation.        (line   6)
 * interface:                             Tooltip Frontends.   (line  48)
@@ -1703,6 +1745,8 @@ Concept Index
 * package backends:                      Package Backends.    (line   6)
 * pluggable:                             Structure.           (line   6)
 * pop-up:                                Tooltip Frontends.   (line   6)
+* post-processing:                       Candidates Post-Processing.
+                                                              (line   6)
 * prefix matches:                        Terminology.         (line  10)
 * preview:                               Preview Frontends.   (line   6)
 * quick start:                           Initial Setup.       (line   6)
@@ -1731,45 +1775,45 @@ Concept Index
 
 
 Tag Table:
-Node: Top566
-Node: Overview1988
-Node: Terminology2398
-Node: Structure3707
-Node: Getting Started5200
-Node: Installation5480
-Node: Initial Setup5865
-Node: Usage Basics6715
-Node: Commands7695
-Ref: Commands-Footnote-110095
-Node: Customization10262
-Node: Customization Interface10736
-Node: Configuration File11271
-Ref: company-selection-wrap-around13587
-Node: Frontends16080
-Node: Tooltip Frontends17051
-Ref: Tooltip Frontends-Footnote-127767
-Node: Preview Frontends28004
-Ref: Preview Frontends-Footnote-129264
-Node: Echo Frontends29391
-Node: Candidates Search30926
-Node: Filter Candidates32262
-Node: Quick Access a Candidate33044
-Node: Backends34664
-Node: Backends Usage Basics35696
-Ref: Backends Usage Basics-Footnote-137130
-Node: Grouped Backends37214
-Node: Package Backends38727
-Node: Code Completion39658
-Node: Text Completion45187
-Node: File Name Completion49623
-Node: Template Expansion51173
-Node: Candidates Post-Processing51894
-Node: Troubleshooting53373
-Node: Index55048
-Node: Key Index55213
-Node: Variable Index56714
-Node: Function Index61569
-Node: Concept Index66271
+Node: Top575
+Node: Overview2006
+Node: Terminology2416
+Node: Structure3725
+Node: Getting Started5218
+Node: Installation5498
+Node: Initial Setup5883
+Node: Usage Basics6733
+Node: Commands7713
+Ref: Commands-Footnote-110113
+Node: Customization10280
+Node: Customization Interface10754
+Node: Configuration File11289
+Ref: company-selection-wrap-around13605
+Node: Frontends16098
+Node: Tooltip Frontends17069
+Ref: Tooltip Frontends-Footnote-127785
+Node: Preview Frontends28022
+Ref: Preview Frontends-Footnote-129282
+Node: Echo Frontends29409
+Node: Candidates Search30944
+Node: Filter Candidates32280
+Node: Quick Access a Candidate33062
+Node: Backends34682
+Node: Backends Usage Basics35714
+Ref: Backends Usage Basics-Footnote-137148
+Node: Grouped Backends37232
+Node: Package Backends38745
+Node: Code Completion39676
+Node: Text Completion45205
+Node: File Name Completion49641
+Node: Template Expansion51191
+Node: Candidates Post-Processing51912
+Node: Troubleshooting54491
+Node: Index56166
+Node: Key Index56331
+Node: Variable Index57832
+Node: Function Index62687
+Node: Concept Index67389
 
 End Tag Table
 
