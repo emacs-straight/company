@@ -3607,6 +3607,7 @@ Example: \(company-begin-with \\='\(\"foo\" \"foobar\" \"foobarbaz\"\)\)"
 
 (declare-function find-library-name "find-func")
 (declare-function lm-version "lisp-mnt")
+(declare-function lm-header "lisp-mnt")
 
 (defun company-version (&optional show-version)
   "Get the Company version as string.
@@ -3617,9 +3618,12 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
     (require 'find-func)
     (insert-file-contents (find-library-name "company"))
     (require 'lisp-mnt)
-    (if show-version
-        (message "Company version: %s" (lm-version))
-      (lm-version))))
+    ;; `lm-package-version' was added in 2025.
+    (let ((version (or (or (lm-header "package-version")
+                           (lm-version)))))
+      (if show-version
+          (message "Company version: %s" version)
+        version))))
 
 (defun company-diag ()
   "Pop a buffer with information about completions at point."
@@ -3644,7 +3648,8 @@ If SHOW-VERSION is non-nil, show the version in the echo area."
                   (mapcar
                    (lambda (c) (cons c (company-call-backend 'annotation c)))
                    cc)
-                  current-capf (car company-capf--current-completion-data))
+                  current-capf (car (bound-and-true-p
+                                     company-capf--current-completion-data)))
           (error (setq annotations 'error)))))
     (pop-to-buffer (get-buffer-create "*company-diag*"))
     (setq buffer-read-only nil)
