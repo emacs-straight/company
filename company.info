@@ -1,4 +1,4 @@
-This is dochoL5bk.info, produced by makeinfo version 6.8 from
+This is docVSL6JG.info, produced by makeinfo version 6.8 from
 company.texi.
 
 This user manual is for Company version 1.0.3-snapshot
@@ -16,7 +16,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: dochoL5bk.info,  Node: Top,  Next: Overview,  Up: (dir)
+File: docVSL6JG.info,  Node: Top,  Next: Overview,  Up: (dir)
 
 Company
 *******
@@ -84,7 +84,7 @@ Backends
 
 
 
-File: dochoL5bk.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
+File: docVSL6JG.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
 
 1 Overview
 **********
@@ -101,7 +101,7 @@ writers, and scientists during code and text writing.
 * Structure::
 
 
-File: dochoL5bk.info,  Node: Terminology,  Next: Structure,  Up: Overview
+File: docVSL6JG.info,  Node: Terminology,  Next: Structure,  Up: Overview
 
 1.1 Terminology
 ===============
@@ -128,7 +128,7 @@ commitment to handling completion candidates and its extensible nature
 allowing it to cover a wide range of usage scenarios.
 
 
-File: dochoL5bk.info,  Node: Structure,  Prev: Terminology,  Up: Overview
+File: docVSL6JG.info,  Node: Structure,  Prev: Terminology,  Up: Overview
 
 1.2 Structure
 =============
@@ -162,7 +162,7 @@ initialization file (*note (emacs)Init File::):
      (add-hook 'after-init-hook 'company-tng-mode)
 
 
-File: dochoL5bk.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
+File: docVSL6JG.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
 
 2 Getting Started
 *****************
@@ -177,7 +177,7 @@ This chapter provides basic instructions for Company setup and usage.
 * Commands::
 
 
-File: dochoL5bk.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
+File: docVSL6JG.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
 
 2.1 Installation
 ================
@@ -189,7 +189,7 @@ form of both stable and development releases.  To install Company, type
 For more details on Emacs package archives, *note (emacs)Packages::.
 
 
-File: dochoL5bk.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
+File: docVSL6JG.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
 
 2.2 Initial Setup
 =================
@@ -211,7 +211,7 @@ To have Company always enabled for the following sessions, add the line
 (emacs)Init File::).
 
 
-File: dochoL5bk.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
+File: docVSL6JG.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
 
 2.3 Usage Basics
 ================
@@ -236,7 +236,7 @@ respectively key bindings ‘C-n’ and ‘C-p’, then do one of the following:
    • Hit ‘C-g’ to stop activity of Company.
 
 
-File: dochoL5bk.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
+File: docVSL6JG.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
 
 2.4 Commands
 ============
@@ -310,7 +310,7 @@ utilize ‘M-x describe-keymap <RET> company-active-map’ or
 ‘C-h f <RET> company-mode’.
 
 
-File: dochoL5bk.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
+File: docVSL6JG.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
 
 3 Customization
 ***************
@@ -327,7 +327,7 @@ approaches.
 * Configuration File::
 
 
-File: dochoL5bk.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
+File: docVSL6JG.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
 
 3.1 Customization Interface
 ===========================
@@ -343,7 +343,7 @@ For instructions on how to change the settings, *note (emacs)Changing a
 Variable::.
 
 
-File: dochoL5bk.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
+File: docVSL6JG.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
 
 3.2 Configuration File
 ======================
@@ -443,7 +443,7 @@ Company exposes the following life-cycle hooks:
  -- User Option: company-after-completion-hook
 
 
-File: dochoL5bk.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
+File: docVSL6JG.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
 
 4 Frontends
 ***********
@@ -472,7 +472,7 @@ displayed candidates can be searched, filtered, and quick-accessed.
 * Quick Access a Candidate::
 
 
-File: dochoL5bk.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
+File: docVSL6JG.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
 
 4.1 Tooltip Frontends
 =====================
@@ -726,7 +726,7 @@ image-types’.  Before compiling Emacs, make sure ‘librsvg’ is installed
 on your system.
 
 
-File: dochoL5bk.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
+File: docVSL6JG.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
 
 4.2 Preview Frontends
 =====================
@@ -765,7 +765,7 @@ The look of the preview is controlled by the following faces:
 Terminology::) may be shown in full after point.
 
 
-File: dochoL5bk.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
+File: docVSL6JG.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
 
 4.3 Echo Frontends
 ==================
@@ -806,7 +806,7 @@ To apply visual changes to the output of these frontends, configure the
 faces ‘company-echo’ and ‘company-echo-common’.
 
 
-File: dochoL5bk.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
+File: docVSL6JG.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
 
 4.4 Candidates Search
 =====================
@@ -841,7 +841,7 @@ Search matches are distinguished by the ‘company-tooltip-search’ and
              [image src="./images/small/tooltip-search.png" ]
 
 
-File: dochoL5bk.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
+File: docVSL6JG.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
 
 4.5 Filter Candidates
 =====================
@@ -860,7 +860,7 @@ states, use key binding ‘C-o’.
              [image src="./images/small/tooltip-filter.png" ]
 
 
-File: dochoL5bk.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
+File: docVSL6JG.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
 
 4.6 Quick Access a Candidate
 ============================
@@ -906,7 +906,7 @@ how to change quick-access hints faces.
          [image src="./images/small/tooltip-qa-faces-light.png" ]
 
 
-File: dochoL5bk.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
+File: docVSL6JG.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
 
 5 Backends
 **********
@@ -933,7 +933,7 @@ concepts are described in this user manual too.
 * Candidates Post-Processing::
 
 
-File: dochoL5bk.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
+File: docVSL6JG.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
 
 5.1 Backends Usage Basics
 =========================
@@ -969,7 +969,7 @@ can be assigned to key bindings, for example:
 Backends::.
 
 
-File: dochoL5bk.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
+File: docVSL6JG.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
 
 5.2 Grouped Backends
 ====================
@@ -1005,7 +1005,7 @@ example:
      (setq company-backends '((company-capf :with company-yasnippet)))
 
 
-File: dochoL5bk.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
+File: docVSL6JG.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
 
 5.3 Package Backends
 ====================
@@ -1035,7 +1035,7 @@ following:
 * Template Expansion::
 
 
-File: dochoL5bk.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
+File: docVSL6JG.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
 
 5.3.1 Code Completion
 ---------------------
@@ -1150,7 +1150,7 @@ File: dochoL5bk.info,  Node: Code Completion,  Next: Text Completion,  Up: Packa
      completion styles with this backend.  The default value is nil.
 
 
-File: dochoL5bk.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
+File: docVSL6JG.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
 
 5.3.2 Text Completion
 ---------------------
@@ -1238,7 +1238,7 @@ File: dochoL5bk.info,  Node: Text Completion,  Next: File Name Completion,  Prev
           another dictionary.
 
 
-File: dochoL5bk.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
+File: docVSL6JG.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
 
 5.3.3 File Name Completion
 --------------------------
@@ -1271,7 +1271,7 @@ File: dochoL5bk.info,  Node: File Name Completion,  Next: Template Expansion,  P
           directory.
 
 
-File: dochoL5bk.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
+File: docVSL6JG.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
 
 5.3.4 Template Expansion
 ------------------------
@@ -1291,7 +1291,7 @@ File: dochoL5bk.info,  Node: Template Expansion,  Prev: File Name Completion,  U
      system YASnippet (https://github.com/joaotavora/yasnippet).
 
 
-File: dochoL5bk.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
+File: docVSL6JG.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
 
 5.4 Candidates Post-Processing
 ==============================
@@ -1354,7 +1354,7 @@ Company is bundled with several transformer functions.
      case-insensitively.
 
 
-File: dochoL5bk.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
+File: docVSL6JG.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
 
 6 Troubleshooting
 *****************
@@ -1395,7 +1395,7 @@ attaching the following information:
      command: ‘M-x toggle-debug-on-error’ before reproducing the error.
 
 
-File: dochoL5bk.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
+File: docVSL6JG.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
 
 Index
 *****
@@ -1408,7 +1408,7 @@ Index
 * Concept Index::
 
 
-File: dochoL5bk.info,  Node: Key Index,  Next: Variable Index,  Up: Index
+File: docVSL6JG.info,  Node: Key Index,  Next: Variable Index,  Up: Index
 
 Key Index
 =========
@@ -1437,7 +1437,7 @@ Key Index
 * TAB <1>:                               Commands.             (line 26)
 
 
-File: dochoL5bk.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
+File: docVSL6JG.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
 
 Variable Index
 ==============
@@ -1512,7 +1512,7 @@ Variable Index
                                                               (line   6)
 
 
-File: dochoL5bk.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
+File: docVSL6JG.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
 
 Function Index
 ==============
@@ -1585,7 +1585,7 @@ Function Index
 * global-company-mode:                   Initial Setup.       (line  18)
 
 
-File: dochoL5bk.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
+File: docVSL6JG.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
 
 Concept Index
 =============
