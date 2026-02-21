@@ -1,4 +1,4 @@
-This is docIRIgRu.info, produced by makeinfo version 7.1.1 from
+This is company.info, produced by makeinfo version 7.2 from
 company.texi.
 
 This user manual is for Company version 1.0.3-snapshot
@@ -16,7 +16,7 @@ START-INFO-DIR-ENTRY
 END-INFO-DIR-ENTRY
 
 
-File: docIRIgRu.info,  Node: Top,  Next: Overview,  Up: (dir)
+File: company.info,  Node: Top,  Next: Overview,  Up: (dir)
 
 Company
 *******
@@ -82,9 +82,8 @@ Backends
 * Package Backends::
 * Candidates Post-Processing::
 
-
 
-File: docIRIgRu.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
+File: company.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
 
 1 Overview
 **********
@@ -101,7 +100,7 @@ writers, and scientists during code and text writing.
 * Structure::
 
 
-File: docIRIgRu.info,  Node: Terminology,  Next: Structure,  Up: Overview
+File: company.info,  Node: Terminology,  Next: Structure,  Up: Overview
 
 1.1 Terminology
 ===============
@@ -128,7 +127,7 @@ commitment to handling completion candidates and its extensible nature
 allowing it to cover a wide range of usage scenarios.
 
 
-File: docIRIgRu.info,  Node: Structure,  Prev: Terminology,  Up: Overview
+File: company.info,  Node: Structure,  Prev: Terminology,  Up: Overview
 
 1.2 Structure
 =============
@@ -162,7 +161,7 @@ Emacs initialization file (*note (emacs)Init File::):
      (add-hook 'after-init-hook 'company-tng-mode)
 
 
-File: docIRIgRu.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
+File: company.info,  Node: Getting Started,  Next: Customization,  Prev: Overview,  Up: Top
 
 2 Getting Started
 *****************
@@ -177,7 +176,7 @@ This chapter provides basic instructions for Company setup and usage.
 * Commands::
 
 
-File: docIRIgRu.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
+File: company.info,  Node: Installation,  Next: Initial Setup,  Up: Getting Started
 
 2.1 Installation
 ================
@@ -189,7 +188,7 @@ form of both stable and development releases.  To install Company, type
 For more details on Emacs package archives, *note (emacs)Packages::.
 
 
-File: docIRIgRu.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
+File: company.info,  Node: Initial Setup,  Next: Usage Basics,  Prev: Installation,  Up: Getting Started
 
 2.2 Initial Setup
 =================
@@ -211,7 +210,7 @@ To have Company always enabled for the following sessions, add the line
 (emacs)Init File::).
 
 
-File: docIRIgRu.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
+File: company.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
 
 2.3 Usage Basics
 ================
@@ -236,7 +235,7 @@ respectively key bindings ‘C-n’ and ‘C-p’, then do one of the following:
    • Hit ‘C-g’ to stop activity of Company.
 
 
-File: docIRIgRu.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
+File: company.info,  Node: Commands,  Prev: Usage Basics,  Up: Getting Started
 
 2.4 Commands
 ============
@@ -310,7 +309,7 @@ utilize ‘M-x describe-keymap <RET> company-active-map’ or
 ‘C-h f <RET> company-mode’.
 
 
-File: docIRIgRu.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
+File: company.info,  Node: Customization,  Next: Frontends,  Prev: Getting Started,  Up: Top
 
 3 Customization
 ***************
@@ -327,7 +326,7 @@ approaches.
 * Configuration File::
 
 
-File: docIRIgRu.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
+File: company.info,  Node: Customization Interface,  Next: Configuration File,  Up: Customization
 
 3.1 Customization Interface
 ===========================
@@ -343,7 +342,7 @@ For instructions on how to change the settings, *note (emacs)Changing a
 Variable::.
 
 
-File: docIRIgRu.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
+File: company.info,  Node: Configuration File,  Prev: Customization Interface,  Up: Customization
 
 3.2 Configuration File
 ======================
@@ -353,11 +352,11 @@ core settings that influence its overall behavior.
 
  -- User Option: company-minimum-prefix-length
      This is one of the values (together with ‘company-idle-delay’),
-     based on which Company auto-stars looking up completion candidates.
-     This option configures how many characters have to be typed in by a
-     user before candidates start to be collected and displayed.  An
-     often choice nowadays is to configure this option to a lower number
-     than the default value of ‘3’.
+     based on which Company auto-starts looking up completion
+     candidates.  This option configures how many characters have to be
+     typed in by a user before candidates start to be collected and
+     displayed.  An often choice nowadays is to configure this option to
+     a lower number than the default value of ‘3’.
 
  -- User Option: company-idle-delay
      This is the second of the options that configure Company's
@@ -443,7 +442,7 @@ Company exposes the following life-cycle hooks:
  -- User Option: company-after-completion-hook
 
 
-File: docIRIgRu.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
+File: company.info,  Node: Frontends,  Next: Backends,  Prev: Customization,  Up: Top
 
 4 Frontends
 ***********
@@ -472,7 +471,7 @@ displayed candidates can be searched, filtered, and quick-accessed.
 * Quick Access a Candidate::
 
 
-File: docIRIgRu.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
+File: company.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Frontends
 
 4.1 Tooltip Frontends
 =====================
@@ -726,7 +725,7 @@ image-types’.  Before compiling Emacs, make sure ‘librsvg’ is installed
 on your system.
 
 
-File: docIRIgRu.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
+File: company.info,  Node: Preview Frontends,  Next: Echo Frontends,  Prev: Tooltip Frontends,  Up: Frontends
 
 4.2 Preview Frontends
 =====================
@@ -765,7 +764,7 @@ The look of the preview is controlled by the following faces:
 Terminology::) may be shown in full after point.
 
 
-File: docIRIgRu.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
+File: company.info,  Node: Echo Frontends,  Next: Candidates Search,  Prev: Preview Frontends,  Up: Frontends
 
 4.3 Echo Frontends
 ==================
@@ -806,7 +805,7 @@ To apply visual changes to the output of these frontends, configure the
 faces ‘company-echo’ and ‘company-echo-common’.
 
 
-File: docIRIgRu.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
+File: company.info,  Node: Candidates Search,  Next: Filter Candidates,  Prev: Echo Frontends,  Up: Frontends
 
 4.4 Candidates Search
 =====================
@@ -841,7 +840,7 @@ Search matches are distinguished by the ‘company-tooltip-search’ and
              [image src="./images/small/tooltip-search.png" ]
 
 
-File: docIRIgRu.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
+File: company.info,  Node: Filter Candidates,  Next: Quick Access a Candidate,  Prev: Candidates Search,  Up: Frontends
 
 4.5 Filter Candidates
 =====================
@@ -860,7 +859,7 @@ states, use key binding ‘C-o’.
              [image src="./images/small/tooltip-filter.png" ]
 
 
-File: docIRIgRu.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
+File: company.info,  Node: Quick Access a Candidate,  Prev: Filter Candidates,  Up: Frontends
 
 4.6 Quick Access a Candidate
 ============================
@@ -906,7 +905,7 @@ how to change quick-access hints faces.
          [image src="./images/small/tooltip-qa-faces-light.png" ]
 
 
-File: docIRIgRu.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
+File: company.info,  Node: Backends,  Next: Troubleshooting,  Prev: Frontends,  Up: Top
 
 5 Backends
 **********
@@ -933,7 +932,7 @@ concepts are described in this user manual too.
 * Candidates Post-Processing::
 
 
-File: docIRIgRu.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
+File: company.info,  Node: Backends Usage Basics,  Next: Grouped Backends,  Up: Backends
 
 5.1 Backends Usage Basics
 =========================
@@ -969,7 +968,7 @@ can be assigned to key bindings, for example:
 Backends::.
 
 
-File: docIRIgRu.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
+File: company.info,  Node: Grouped Backends,  Next: Package Backends,  Prev: Backends Usage Basics,  Up: Backends
 
 5.2 Grouped Backends
 ====================
@@ -1005,7 +1004,7 @@ example:
      (setq company-backends '((company-capf :with company-yasnippet)))
 
 
-File: docIRIgRu.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
+File: company.info,  Node: Package Backends,  Next: Candidates Post-Processing,  Prev: Grouped Backends,  Up: Backends
 
 5.3 Package Backends
 ====================
@@ -1035,7 +1034,7 @@ following:
 * Template Expansion::
 
 
-File: docIRIgRu.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
+File: company.info,  Node: Code Completion,  Next: Text Completion,  Up: Package Backends
 
 5.3.1 Code Completion
 ---------------------
@@ -1150,7 +1149,7 @@ File: docIRIgRu.info,  Node: Code Completion,  Next: Text Completion,  Up: Packa
      completion styles with this backend.  The default value is nil.
 
 
-File: docIRIgRu.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
+File: company.info,  Node: Text Completion,  Next: File Name Completion,  Prev: Code Completion,  Up: Package Backends
 
 5.3.2 Text Completion
 ---------------------
@@ -1238,7 +1237,7 @@ File: docIRIgRu.info,  Node: Text Completion,  Next: File Name Completion,  Prev
           another dictionary.
 
 
-File: docIRIgRu.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
+File: company.info,  Node: File Name Completion,  Next: Template Expansion,  Prev: Text Completion,  Up: Package Backends
 
 5.3.3 File Name Completion
 --------------------------
@@ -1271,7 +1270,7 @@ File: docIRIgRu.info,  Node: File Name Completion,  Next: Template Expansion,  P
           directory.
 
 
-File: docIRIgRu.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
+File: company.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
 
 5.3.4 Template Expansion
 ------------------------
@@ -1291,7 +1290,7 @@ File: docIRIgRu.info,  Node: Template Expansion,  Prev: File Name Completion,  U
      system YASnippet (https://github.com/joaotavora/yasnippet).
 
 
-File: docIRIgRu.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
+File: company.info,  Node: Candidates Post-Processing,  Prev: Package Backends,  Up: Backends
 
 5.4 Candidates Post-Processing
 ==============================
@@ -1354,7 +1353,7 @@ Company is bundled with several transformer functions.
      case-insensitively.
 
 
-File: docIRIgRu.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
+File: company.info,  Node: Troubleshooting,  Next: Index,  Prev: Backends,  Up: Top
 
 6 Troubleshooting
 *****************
@@ -1395,7 +1394,7 @@ attaching the following information:
      command: ‘M-x toggle-debug-on-error’ before reproducing the error.
 
 
-File: docIRIgRu.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
+File: company.info,  Node: Index,  Prev: Troubleshooting,  Up: Top
 
 Index
 *****
@@ -1408,7 +1407,7 @@ Index
 * Concept Index::
 
 
-File: docIRIgRu.info,  Node: Key Index,  Next: Variable Index,  Up: Index
+File: company.info,  Node: Key Index,  Next: Variable Index,  Up: Index
 
 Key Index
 =========
@@ -1437,7 +1436,7 @@ Key Index
 * TAB <1>:                               Commands.             (line 26)
 
 
-File: docIRIgRu.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
+File: company.info,  Node: Variable Index,  Next: Function Index,  Prev: Key Index,  Up: Index
 
 Variable Index
 ==============
@@ -1512,7 +1511,7 @@ Variable Index
                                                               (line   6)
 
 
-File: docIRIgRu.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
+File: company.info,  Node: Function Index,  Next: Concept Index,  Prev: Variable Index,  Up: Index
 
 Function Index
 ==============
@@ -1585,7 +1584,7 @@ Function Index
 * global-company-mode:                   Initial Setup.       (line  18)
 
 
-File: docIRIgRu.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
+File: company.info,  Node: Concept Index,  Prev: Function Index,  Up: Index
 
 Concept Index
 =============
@@ -1772,52 +1771,52 @@ Concept Index
 * troubleshoot:                          Troubleshooting.     (line   6)
 * usage:                                 Usage Basics.        (line   6)
 
-
 
 Tag Table:
-Node: Top577
-Node: Overview2006
-Node: Terminology2416
-Node: Structure3721
-Node: Getting Started5213
-Node: Installation5493
-Node: Initial Setup5878
-Node: Usage Basics6728
-Node: Commands7704
-Ref: Commands-Footnote-110102
-Node: Customization10269
-Node: Customization Interface10743
-Node: Configuration File11278
-Ref: company-selection-wrap-around13592
-Node: Frontends16081
-Node: Tooltip Frontends17052
-Ref: Tooltip Frontends-Footnote-127750
-Node: Preview Frontends27987
-Ref: Preview Frontends-Footnote-129247
-Node: Echo Frontends29374
-Node: Candidates Search30905
-Node: Filter Candidates32239
-Node: Quick Access a Candidate33021
-Node: Backends34641
-Node: Backends Usage Basics35673
-Ref: Backends Usage Basics-Footnote-137107
-Node: Grouped Backends37191
-Node: Package Backends38704
-Node: Code Completion39633
-Node: Text Completion45152
-Node: File Name Completion49578
-Node: Template Expansion51126
-Node: Candidates Post-Processing51847
-Node: Troubleshooting54426
-Node: Index56099
-Node: Key Index56264
-Node: Variable Index57765
-Node: Function Index62620
-Node: Concept Index67322
+Node: Top573
+Node: Overview1999
+Node: Terminology2407
+Node: Structure3710
+Node: Getting Started5200
+Node: Installation5478
+Node: Initial Setup5861
+Node: Usage Basics6709
+Node: Commands7683
+Ref: Commands-Footnote-110079
+Node: Customization10246
+Node: Customization Interface10718
+Node: Configuration File11251
+Ref: company-selection-wrap-around13565
+Node: Frontends16054
+Node: Tooltip Frontends17023
+Ref: Tooltip Frontends-Footnote-127719
+Node: Preview Frontends27956
+Ref: Preview Frontends-Footnote-129214
+Node: Echo Frontends29341
+Node: Candidates Search30870
+Node: Filter Candidates32202
+Node: Quick Access a Candidate32982
+Node: Backends34600
+Node: Backends Usage Basics35630
+Ref: Backends Usage Basics-Footnote-137062
+Node: Grouped Backends37146
+Node: Package Backends38657
+Node: Code Completion39584
+Node: Text Completion45101
+Node: File Name Completion49525
+Node: Template Expansion51071
+Node: Candidates Post-Processing51790
+Node: Troubleshooting54367
+Node: Index56038
+Node: Key Index56201
+Node: Variable Index57700
+Node: Function Index62553
+Node: Concept Index67253
 
 End Tag Table
 
 
 Local Variables:
 coding: utf-8
+Info-documentlanguage: en
 End:

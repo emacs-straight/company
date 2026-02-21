@@ -1,0 +1,79 @@
+# History of user-visible changes
+
+# Next
+
+* The minimum required version of Emacs is now 26.1.
+* `TAB` binding changed to `company-complete-common-or-cycle`, and `backtab`
+  binding to `company-cycle-backward`
+  (#[1499](https://github.com/company-mode/company-mode/pull/1499)).
+* Completion is restarted if it enters a new "field" at the end, as indicated by
+  the `adjust-boundaries` backend action
+  (#[1497](https://github.com/company-mode/company-mode/pull/1497)). This
+  benefits file name (and directory) completion.  The user option
+  `company-files-chop-trailing-slash` has been removed, and the
+  `post-completion` handler in `company-files` has been removed as well.
+* Handle the case when the current c-a-p-f function changes mid-session
+  (#[1494](https://github.com/company-mode/company-mode/pull/1494)).
+
+# 2024-09-23 (1.0.2)
+
+* More reliable cache expiration (at the beginning of completion).
+
+# 2024-09-21 (1.0.1)
+
+* Fix for failover from a backend group to the next backend.
+
+# 2024-09-21 (1.0.0)
+
+* `company-complete-common` now performs generalized [expand common
+  part](https://github.com/company-mode/company-mode/pull/1488) completion when
+  the backend supports that. In particular, for `completion-at-point-functions`
+  it queries `completion-try-completion`. `company-dabbrev-code` and
+  `company-etags` also do that when `completion-styles` support is enabled.
+* `company-dabbrev-other-buffers` and `company-dabbrev-code-other-buffers` can
+  now take a function as its value (#[1485](https://github.com/company-mode/company-mode/issues/1485))
+* Completion works in the middle of a symbol
+  (#[1474](https://github.com/company-mode/company-mode/pull/1474)).
+* New user option `company-inhibit-inside-symbols`. Set it to `t` to switch
+  closer to the previous behavior.
+* Improved behavior when user types new character while completion is being
+  computed: better performance, less blinking (in the rare cases when it still
+  happened). This affects native async backends and is opt-in with
+  `company-capf`.
+* For that, `company-capf` supports interrupting computation on new user
+  input. Completion functions that want to take advantage of this behavior
+  should include `:company-use-while-no-input t` in the returned properties.
+* `company-elisp` has been removed.  It's not needed since Emacs 24.4, with all
+  of its features having been incorporated into the built-in Elisp completion.
+* `company-files` shows shorter completions.  Previously, the popup spanned
+  the whole absolute file name being completed, and now it starts after the
+  nearest directory separator
+  (#[1040](https://github.com/company-mode/company-mode/issues/1040)).
+* New user option `company-capf-disabled-functions`
+  (#[1437](https://github.com/company-mode/company-mode/issues/1437)).
+* Better support for `yas-key-syntaxes`
+  (#[1268](https://github.com/company-mode/company-mode/issues/1268)).
+* New user option `company-tooltip-scrollbar-width` with default 0.4.
+* The tooltip uses a more complex rendering approach, supporting double
+  width/CJK characters, as well as buffer text of different sizes
+  ([#1394](https://github.com/company-mode/company-mode/pull/1394)).
+  `variable-pitch-mode` is also working better, although when using it it's
+  recommended to customize the `company-tooltip` face to be monospaced.
+* New user option `company-dabbrev-code-completion-styles`.  Use it to enable
+  fuzzy matching in `company-dabbrev-code`
+  ([#1215](https://github.com/company-mode/company-mode/pull/1215)).  An example
+  configuration one can try:
+
+```el
+(setq company-dabbrev-code-ignore-case t
+      company-dabbrev-code-completion-styles '(basic flex))
+```
+
+* New user option `company-etags-completion-styles`, to be used the same way.
+
+* The backend command `keep-prefix` is being phased out.  The built-in backends
+  implement it internally now, which resolved a number of sharp edges (mostly)
+  around "grouped" backends.  To make that easier, several helpers were added,
+  such as `company-cache-fetch` and `company-substitute-prefix`
+...
+...
