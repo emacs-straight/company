@@ -105,8 +105,9 @@ Users of HiDPI screens might like to set it to 2."
   "Show company-childframe candidate menu."
   (defvar x-wait-for-event-timeout)
   (defvar x-fast-protocol-requests)
-  (let* (;; Should be unnecessary in Emacs 31+, debbugs#80662.
-         (x-wait-for-event-timeout nil)
+  (let* ((x-wait-for-event-timeout (and (>= emacs-major-version 31)
+                                        ;; debbugs#80662
+                                        x-wait-for-event-timeout))
          (before-make-frame-hook)
          (after-make-frame-functions)
          (x-fast-protocol-requests t)
@@ -114,9 +115,7 @@ Users of HiDPI screens might like to set it to 2."
          (company-lines (company--create-lines company-selection height))
          (margin (car company-lines))
          (lines (cdr company-lines))
-         (width (max (min (length (car lines))
-                          company-tooltip-maximum-width)
-                     company-tooltip-minimum-width))
+         (width (length (car lines)))
          (contents (mapconcat #'identity lines "\n"))
          (buffer (get-buffer-create company-childframe-buffer)))
     (when (and (eq (frame-live-p company-childframe--frame) 'x)
