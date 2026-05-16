@@ -1,2 +1,2 @@
 ;; Generated package description from company.el  -*- no-byte-compile: t; lexical-binding:t -*-
-(define-package "company" "1.0.2.0.20260513.15007" "Modular text completion framework" '((emacs "26.1") (posframe "1.5.1")) :commit "5abaf93ad2dd1c353cf4acc48d3ba6a89fa8fc04" :maintainer '("Dmitry Gutov" . "dmitry@gutov.dev") :keywords '("abbrev" "convenience" "matching") :url "http://company-mode.github.io/")
+(define-package "company" "1.0.2.0.20260515.134946" "Modular text completion framework" '((emacs "26.1") (posframe "1.5.1")) :commit "4faf36bc250fa6edaf91d11dd4191afd68a3b629" :maintainer '("Dmitry Gutov" . "dmitry@gutov.dev") :keywords '("abbrev" "convenience" "matching") :url "http://company-mode.github.io/")
