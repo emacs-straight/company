@@ -1,4 +1,4 @@
-This is company.info, produced by makeinfo version 7.2 from
+This is company.info, produced by makeinfo version 7.1.1 from
 company.texi.
 
 This user manual is for Company version 1.0.3-snapshot
@@ -81,6 +81,7 @@ Backends
 * Grouped Backends::
 * Package Backends::
 * Candidates Post-Processing::
+
 
 
 File: company.info,  Node: Overview,  Next: Getting Started,  Prev: Top,  Up: Top
@@ -1771,52 +1772,52 @@ Concept Index
 * troubleshoot:                          Troubleshooting.     (line   6)
 * usage:                                 Usage Basics.        (line   6)
 
+
 
 Tag Table:
-Node: Top573
-Node: Overview1999
-Node: Terminology2407
-Node: Structure3710
-Node: Getting Started5200
-Node: Installation5478
-Node: Initial Setup5861
-Node: Usage Basics6709
-Node: Commands7683
-Ref: Commands-Footnote-110079
-Node: Customization10246
-Node: Customization Interface10718
-Node: Configuration File11251
-Ref: company-selection-wrap-around13565
-Node: Frontends16054
-Node: Tooltip Frontends17023
-Ref: Tooltip Frontends-Footnote-127719
-Node: Preview Frontends27956
-Ref: Preview Frontends-Footnote-129214
-Node: Echo Frontends29341
-Node: Candidates Search30870
-Node: Filter Candidates32202
-Node: Quick Access a Candidate32982
-Node: Backends34600
-Node: Backends Usage Basics35630
-Ref: Backends Usage Basics-Footnote-137062
-Node: Grouped Backends37146
-Node: Package Backends38657
-Node: Code Completion39584
-Node: Text Completion45101
-Node: File Name Completion49525
-Node: Template Expansion51071
-Node: Candidates Post-Processing51790
-Node: Troubleshooting54367
-Node: Index56038
-Node: Key Index56201
-Node: Variable Index57700
-Node: Function Index62553
-Node: Concept Index67253
+Node: Top575
+Node: Overview2002
+Node: Terminology2410
+Node: Structure3713
+Node: Getting Started5203
+Node: Installation5481
+Node: Initial Setup5864
+Node: Usage Basics6712
+Node: Commands7686
+Ref: Commands-Footnote-110082
+Node: Customization10249
+Node: Customization Interface10721
+Node: Configuration File11254
+Ref: company-selection-wrap-around13568
+Node: Frontends16057
+Node: Tooltip Frontends17026
+Ref: Tooltip Frontends-Footnote-127722
+Node: Preview Frontends27959
+Ref: Preview Frontends-Footnote-129217
+Node: Echo Frontends29344
+Node: Candidates Search30873
+Node: Filter Candidates32205
+Node: Quick Access a Candidate32985
+Node: Backends34603
+Node: Backends Usage Basics35633
+Ref: Backends Usage Basics-Footnote-137065
+Node: Grouped Backends37149
+Node: Package Backends38660
+Node: Code Completion39587
+Node: Text Completion45104
+Node: File Name Completion49528
+Node: Template Expansion51074
+Node: Candidates Post-Processing51793
+Node: Troubleshooting54370
+Node: Index56041
+Node: Key Index56204
+Node: Variable Index57703
+Node: Function Index62556
+Node: Concept Index67256
 
 End Tag Table
 
 
 Local Variables:
 coding: utf-8
-Info-documentlanguage: en
 End:
