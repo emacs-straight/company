@@ -2,6 +2,8 @@
 
 # Next
 
+* Search mode input is displayed at the bottom of the popup
+  ([#1535](https://github.com/company-mode/company-mode/pull/1535)).
 * New built-in frontend using "real graphical" widget for the popup
   ([#1525](https://github.com/company-mode/company-mode/pull/1525)).
   This also adds a hard dependency on the package `posframe`.
@@ -68,10 +70,5 @@
 * New user option `company-dabbrev-code-completion-styles`.  Use it to enable
   fuzzy matching in `company-dabbrev-code`
   ([#1215](https://github.com/company-mode/company-mode/pull/1215)).  An example
-  configuration one can try:
-
-```el
-(setq company-dabbrev-code-ignore-case t
-      company-dabbrev-code-completion-styles '(basic flex))
 ...
 ...
