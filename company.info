@@ -9,7 +9,8 @@ Copyright © 2021-2024 Free Software Foundation, Inc.
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
      Version 1.3 or any later version published by the Free Software
-     Foundation.
+     Foundation, with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.
 INFO-DIR-SECTION Emacs misc features
 START-INFO-DIR-ENTRY
 * Company: (company).           A modular text completion framework.
@@ -35,7 +36,8 @@ Copyright © 2021-2024 Free Software Foundation, Inc.
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
      Version 1.3 or any later version published by the Free Software
-     Foundation.
+     Foundation, with no Invariant Sections, no Front-Cover Texts, and
+     no Back-Cover Texts.
 
 * Menu:
 
@@ -1775,45 +1777,45 @@ Concept Index
 
 
 Tag Table:
-Node: Top575
-Node: Overview2002
-Node: Terminology2410
-Node: Structure3713
-Node: Getting Started5203
-Node: Installation5481
-Node: Initial Setup5864
-Node: Usage Basics6712
-Node: Commands7686
-Ref: Commands-Footnote-110082
-Node: Customization10249
-Node: Customization Interface10721
-Node: Configuration File11254
-Ref: company-selection-wrap-around13568
-Node: Frontends16057
-Node: Tooltip Frontends17026
-Ref: Tooltip Frontends-Footnote-127722
-Node: Preview Frontends27959
-Ref: Preview Frontends-Footnote-129217
-Node: Echo Frontends29344
-Node: Candidates Search30873
-Node: Filter Candidates32205
-Node: Quick Access a Candidate32985
-Node: Backends34603
-Node: Backends Usage Basics35633
-Ref: Backends Usage Basics-Footnote-137065
-Node: Grouped Backends37149
-Node: Package Backends38660
-Node: Code Completion39587
-Node: Text Completion45104
-Node: File Name Completion49528
-Node: Template Expansion51074
-Node: Candidates Post-Processing51793
-Node: Troubleshooting54370
-Node: Index56041
-Node: Key Index56204
-Node: Variable Index57703
-Node: Function Index62556
-Node: Concept Index67256
+Node: Top655
+Node: Overview2162
+Node: Terminology2570
+Node: Structure3873
+Node: Getting Started5363
+Node: Installation5641
+Node: Initial Setup6024
+Node: Usage Basics6872
+Node: Commands7846
+Ref: Commands-Footnote-110242
+Node: Customization10409
+Node: Customization Interface10881
+Node: Configuration File11414
+Ref: company-selection-wrap-around13728
+Node: Frontends16217
+Node: Tooltip Frontends17186
+Ref: Tooltip Frontends-Footnote-127882
+Node: Preview Frontends28119
+Ref: Preview Frontends-Footnote-129377
+Node: Echo Frontends29504
+Node: Candidates Search31033
+Node: Filter Candidates32365
+Node: Quick Access a Candidate33145
+Node: Backends34763
+Node: Backends Usage Basics35793
+Ref: Backends Usage Basics-Footnote-137225
+Node: Grouped Backends37309
+Node: Package Backends38820
+Node: Code Completion39747
+Node: Text Completion45264
+Node: File Name Completion49688
+Node: Template Expansion51234
+Node: Candidates Post-Processing51953
+Node: Troubleshooting54530
+Node: Index56201
+Node: Key Index56364
+Node: Variable Index57863
+Node: Function Index62716
+Node: Concept Index67416
 
 End Tag Table
 
