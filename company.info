@@ -1,10 +1,9 @@
 This is company.info, produced by makeinfo version 7.1.1 from
 company.texi.
 
-This user manual is for Company version 1.0.3-snapshot
-(7 December 2024).
+This user manual is for Company version 1.1.0 (3 July 2026).
 
-Copyright © 2021-2024 Free Software Foundation, Inc.
+Copyright © 2021-2026 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -28,10 +27,9 @@ The goal of this document is to lay out the foundational knowledge of
 the package, so that the readers of the manual could competently start
 adapting Company to their needs and preferences.
 
-This user manual is for Company version 1.0.3-snapshot
-(7 December 2024).
+This user manual is for Company version 1.1.0 (3 July 2026).
 
-Copyright © 2021-2024 Free Software Foundation, Inc.
+Copyright © 2021-2026 Free Software Foundation, Inc.
 
      Permission is granted to copy, distribute and/or modify this
      document under the terms of the GNU Free Documentation License,
@@ -212,6 +210,12 @@ To have Company always enabled for the following sessions, add the line
 ‘(global-company-mode)’ to the Emacs configuration file (*note
 (emacs)Init File::).
 
+When ‘company-global-minibuffer’ is non-nil (the default), Company can
+be used in the minibuffer as well.  The necessary conditions are that a
+supported popup frontend is configured (any of
+‘company-childframe-*-frontend’), and the minibuffer has a local value
+of ‘completion-at-point-functions’.
+
 
 File: company.info,  Node: Usage Basics,  Next: Commands,  Prev: Initial Setup,  Up: Getting Started
 
@@ -267,21 +271,29 @@ commands of the out-of-the-box Company.
      _common part_ is present -- select the next candidate
      (‘company-complete-common-or-cycle’).  In the latter case,
      wraparound is implicitly enabled (*note
-     company-selection-wrap-around::).
+     company-selection-wrap-around::).  The _common part_ behavior can
+     add characters before and after point, as decided by the backend's
+     implementation.
+
+‘S-TAB’
+‘<backtab>’
+     Select the previous candidate, with wraparound implicitly enabled.
+
+‘C-M-i’
+     Insert the _common part_ of all completion candidates.
 
 ‘C-g’
 ‘<ESC ESC ESC>’
      Cancel _company-mode_ activity (‘company-abort’).
 
-‘C-h’
-‘<F1>’
+‘M-h’
      Display a buffer with the documentation for the selected candidate
-     (‘company-show-doc-buffer’).  With a prefix argument (‘C-u C-h’,
-     ‘C-u <F1>’), this command toggles between temporary showing the
-     documentation and keeping the documentation buffer up-to-date
-     whenever the selection changes.
+     (‘company-show-doc-buffer’).  With a prefix argument (‘C-u M-h’),
+     this command toggles between temporary showing the documentation
+     and keeping the documentation buffer up-to-date whenever the
+     selection changes.
 
-‘C-w’
+‘M-g’
      Display a buffer with the definition of the selected candidate
      (‘company-show-location’).
 
@@ -479,19 +491,50 @@ File: company.info,  Node: Tooltip Frontends,  Next: Preview Frontends,  Up: Fro
 4.1 Tooltip Frontends
 =====================
 
-This group of frontends displays completion candidates in an overlayed
-tooltip (aka pop-up).  Company provides three _tooltip frontends_,
+This group of frontends displays completion candidates in a rectangular
+tooltip (aka popup).  Company provides multiple _tooltip frontends_,
 listed below.
 
+Childframe Frontends
+--------------------
+
+The "childframe" family of frontends natually uses a special frame to
+show the popup above the buffer.  It can cross window boundaries and
+works in the minibuffer.  On some builds it's implemented using X11
+child windows, and uses native widgets on others.  It also works in the
+terminal starting with Emacs 31.
+
+ -- Function: company-childframe-unless-just-one-frontend
+     This is one of the default frontends (except in Emacs<31.1 under
+     X11).  It starts displaying its graphical tooltip only if more than
+     one completion candidate is available, which nicely combines -- and
+     it is done so by default -- with
+     ‘company-preview-if-just-one-frontend’, *note Preview Frontends::.
+
+ -- Function: company-childframe-frontend
+     This frontend shows its tooltip for any number of completion
+     candidates.  It is the basic version that related frontends extend.
+
+Pseudo-Tooltip Frontends
+------------------------
+
+The "pseudo-tooltip" family of frontends uses "overlays" (a display
+engine feature) to render the popup inside the buffer.  It has a stable
+and fast implementation, with known caveats: it is limited to the bounds
+of the buffer's window, and rendering might be partially incorrect in
+buffers with mixed fonts, complex formatting involving faces, display
+specs, or certain glyphs.
+
  -- Function: company-pseudo-tooltip-unless-just-one-frontend
-     This is one of the default frontends.  It starts displaying a
-     tooltip only if more than one completion candidate is available,
-     which nicely combines -- and it is done so by default -- with
+     This has been the default frontend before the introduction of the
+     "childframe" family of frontends (now it remains such in Emacs<31.1
+     under X11).  It starts displaying a tooltip only if more than one
+     completion candidate is available, which nicely combines with
      ‘company-preview-if-just-one-frontend’, *note Preview Frontends::.
 
  -- Function: company-pseudo-tooltip-frontend
      This frontend outputs a tooltip for any number of completion
-     candidates.
+     candidates.  It is the basic version that related frontends extend.
 
  -- Function: company-pseudo-tooltip-unless-just-one-frontend-with-delay
      This is a peculiar frontend, that displays a tooltip only if more
@@ -550,7 +593,7 @@ user options.
      available candidates is larger than this option's value, Company
      paginates the results.
 
-          (setq company-tooltip-limit 4)
+          (setq company-tooltip-limit 5)
 
              [image src="./images/small/tooltip-limit.png" ]
 
@@ -572,7 +615,7 @@ user options.
      ‘company-tooltip-minimum’ value, the tooltip is displayed above
      point.
 
-          (setq company-tooltip-minimum 4)
+          (setq company-tooltip-minimum 5)
 
          [image src="./images/small/tooltip-minimum-below.png" ]
 
@@ -584,7 +627,8 @@ user options.
      or below point, the candidates are always listed starting near
      point.  (Putting it differently, the candidates are mirrored
      vertically if a tooltip changes its position, instead of being
-     commonly listed top-to-bottom.)
+     commonly listed top-to-bottom.)  This is only supported by the
+     "pseudo tooktip" backends for now.
 
           (setq company-tooltip-flip-when-above t)
 
@@ -593,24 +637,24 @@ user options.
  -- User Option: company-tooltip-minimum-width
      Sets the minimum width of a tooltip, excluding the margins and the
      scroll bar.  Changing this value especially makes sense if the user
-     navigates between tooltip pages.  Keeping this value at the default
-     ‘0’ allows Company to always adapt the width of the tooltip to the
-     longest shown candidate.  Enlarging ‘company-tooltip-minimum-width’
-     prevents possible significant shifts in the width of the tooltip
-     when navigating to the next/previous tooltip page.  (For an
-     alternate solution, see ‘company-tooltip-width-grow-only’.)
+     navigates between tooltip pages.  The default value of ‘15’ helps
+     reduce how often the tooltip's size changes when you are typing or
+     paging.  Set it to a higher value to limit the resizes further.  Or
+     vice versa to ‘0’ to always adapt to the longest shown candidate.
+     And see the related option ‘company-tooltip-width-grow-only’.
 
  -- User Option: company-tooltip-width-grow-only
-     This is another way to restrict auto-adaptation of the tooltip
-     width (another is by adjusting ‘company-tooltip-minimum-width’
-     value) when navigating between the tooltip pages.
+     This is another way to reduce how often the tooltip resizes (in
+     addition to ‘company-tooltip-minimum-width’), prohibiting reducing
+     the width within one completion session when this option is
+     non-nil.  And when the value is a number, this is the maximum width
+     up to which the non-shrink behavior has effect.  The default value
+     is ‘50’.
 
  -- User Option: company-tooltip-maximum-width
      This user option controls the maximum width of the tooltip inner
-     area.  By default, its value is pseudo-limitless, potentially
-     permitting the output of extremely long candidates.  But if long
-     lines become an issue, set this option to a smaller number, such as
-     ‘60’ or ‘70’.
+     area.  By default, its value is ‘100’.  Change it to allow
+     different limits.
 
  -- User Option: company-tooltip-margin
      Controls the width of the “margin” on the sides of the tooltip
@@ -714,8 +758,8 @@ customization:
       '(company-tooltip-selection
         ((t (:background "LemonChiffon1" :foreground "MistyRose4"))))
       '(company-tooltip-common ((t (:weight bold :foreground "pink1"))))
-      '(company-scrollbar-fg ((t (:background "ivory3"))))
-      '(company-scrollbar-bg ((t (:background "ivory2"))))
+      '(company-tooltip-scrollbar-thumb ((t (:background "ivory3"))))
+      '(company-tooltip-scrollbar-track ((t (:background "ivory2"))))
       '(company-tooltip-annotation ((t (:foreground "MistyRose2")))))
 
           [image src="./images/small/tooltip-faces-light.png" ]
@@ -823,9 +867,9 @@ To quit the search mode, hit ‘C-g’.
  -- User Option: company-search-regexp-function
      The value of this user option must be a function that interprets
      the search input.  By default it is set to the function
-     ‘regexp-quote’, with looks for an exact match.  Company defines
-     several more functions suitable for this option.  They are listed
-     below.
+     ‘company-search-words-in-any-order-regexp’, which looks for
+     matching words in any order.  Company defines several more
+     functions suitable for this option.  They are listed below.
 
  -- Function: company-search-words-regexp
      Searches for words separated with spaces in the given order.
@@ -836,6 +880,10 @@ To quit the search mode, hit ‘C-g’.
  -- Function: company-search-flex-regexp
      Searches for characters in the given order, with anything in
      between.
+
+ -- Function: company-search-flex-words-in-any-order-regexp
+     Searches for words separated with spaces in any order, with
+     anything in between the characters of each word.
 
 Search matches are distinguished by the ‘company-tooltip-search’ and
 ‘company-tooltip-search-selection’ faces.
@@ -1258,20 +1306,6 @@ File: company.info,  Node: File Name Completion,  Next: Template Expansion,  Pre
 
                (setq company-files-exclusions '(".git/" ".DS_Store"))
 
-      -- User Option: company-files-chop-trailing-slash
-          This setting is enabled by default, which results in stripping
-          off a trailing slash from an inserted directory name.  On
-          typing a trailing slash, the process of completion gets
-          started again, from inside the just inserted directory.
-
-          Setting ‘company-files-chop-trailing-slash’ to ‘nil’ makes
-          directory names to be inserted as is, with a trailing slash.
-          In this case, the completion process can be continued, for
-          example, either by explicitly calling _company-files_ backend
-          (*note Backends Usage Basics::) or by starting typing a name
-          of a file/directory known to be located under the inserted
-          directory.
-
 
 File: company.info,  Node: Template Expansion,  Prev: File Name Completion,  Up: Package Backends
 
@@ -1419,10 +1453,10 @@ Key Index
 * Menu:
 
 * C-g:                                   Usage Basics.         (line 23)
-* C-g <1>:                               Commands.             (line 34)
+* C-g <1>:                               Commands.             (line 43)
 * C-g <2>:                               Candidates Search.    (line 11)
 * C-g <3>:                               Filter Candidates.    (line 14)
-* C-h:                                   Commands.             (line 38)
+* C-M-i:                                 Commands.             (line 39)
 * C-M-s:                                 Filter Candidates.    (line  6)
 * C-n:                                   Usage Basics.         (line 12)
 * C-n <1>:                               Commands.             (line 11)
@@ -1430,11 +1464,13 @@ Key Index
 * C-p:                                   Usage Basics.         (line 12)
 * C-p <1>:                               Commands.             (line 16)
 * C-s:                                   Candidates Search.    (line  6)
-* C-w:                                   Commands.             (line 45)
 * M-<digit>:                             Quick Access a Candidate.
                                                                (line  6)
+* M-g:                                   Commands.             (line 53)
+* M-h:                                   Commands.             (line 46)
 * RET:                                   Usage Basics.         (line 15)
 * RET <1>:                               Commands.             (line 21)
+* S-TAB:                                 Commands.             (line 36)
 * TAB:                                   Usage Basics.         (line 17)
 * TAB <1>:                               Commands.             (line 26)
 
@@ -1466,20 +1502,19 @@ Variable Index
 * company-dabbrev-ignore-case:           Text Completion.     (line  47)
 * company-dabbrev-minimum-length:        Text Completion.     (line  13)
 * company-dabbrev-other-buffers:         Text Completion.     (line  23)
-* company-dot-icons-format:              Tooltip Frontends.   (line 183)
+* company-dot-icons-format:              Tooltip Frontends.   (line 215)
 * company-echo-truncate-lines:           Echo Frontends.      (line  33)
 * company-etags-completion-styles:       Code Completion.     (line 109)
 * company-etags-everywhere:              Code Completion.     (line 105)
 * company-etags-ignore-case:             Code Completion.     (line 102)
-* company-files-chop-trailing-slash:     File Name Completion.
-                                                              (line  19)
 * company-files-exclusions:              File Name Completion.
                                                               (line  12)
-* company-format-margin-function:        Tooltip Frontends.   (line 158)
+* company-format-margin-function:        Tooltip Frontends.   (line 190)
 * company-frontends:                     Frontends.           (line   6)
+* company-global-minibuffer:             Initial Setup.       (line  22)
 * company-global-modes:                  Configuration File.  (line  35)
-* company-icon-margin:                   Tooltip Frontends.   (line 169)
-* company-icon-size:                     Tooltip Frontends.   (line 169)
+* company-icon-margin:                   Tooltip Frontends.   (line 201)
+* company-icon-size:                     Tooltip Frontends.   (line 201)
 * company-idle-delay:                    Configuration File.  (line  17)
 * company-inhibit-inside-symbols:        Configuration File.  (line  31)
 * company-insertion-on-trigger:          Configuration File.  (line  68)
@@ -1495,21 +1530,21 @@ Variable Index
 * company-selection-wrap-around:         Configuration File.  (line  47)
 * company-show-quick-access:             Quick Access a Candidate.
                                                               (line  12)
-* company-text-face-extra-attributes:    Tooltip Frontends.   (line 196)
-* company-text-icons-add-background:     Tooltip Frontends.   (line 204)
-* company-text-icons-format:             Tooltip Frontends.   (line 176)
-* company-text-icons-mapping:            Tooltip Frontends.   (line 192)
-* company-tooltip-align-annotations:     Tooltip Frontends.   (line  51)
-* company-tooltip-annotation-padding:    Tooltip Frontends.   (line  63)
-* company-tooltip-flip-when-above:       Tooltip Frontends.   (line 106)
-* company-tooltip-idle-delay:            Tooltip Frontends.   (line  21)
-* company-tooltip-limit:                 Tooltip Frontends.   (line  71)
-* company-tooltip-margin:                Tooltip Frontends.   (line 139)
-* company-tooltip-maximum-width:         Tooltip Frontends.   (line 132)
-* company-tooltip-minimum:               Tooltip Frontends.   (line  91)
-* company-tooltip-minimum-width:         Tooltip Frontends.   (line 117)
-* company-tooltip-offset-display:        Tooltip Frontends.   (line  81)
-* company-tooltip-width-grow-only:       Tooltip Frontends.   (line 127)
+* company-text-face-extra-attributes:    Tooltip Frontends.   (line 228)
+* company-text-icons-add-background:     Tooltip Frontends.   (line 236)
+* company-text-icons-format:             Tooltip Frontends.   (line 208)
+* company-text-icons-mapping:            Tooltip Frontends.   (line 224)
+* company-tooltip-align-annotations:     Tooltip Frontends.   (line  82)
+* company-tooltip-annotation-padding:    Tooltip Frontends.   (line  94)
+* company-tooltip-flip-when-above:       Tooltip Frontends.   (line 137)
+* company-tooltip-idle-delay:            Tooltip Frontends.   (line  52)
+* company-tooltip-limit:                 Tooltip Frontends.   (line 102)
+* company-tooltip-margin:                Tooltip Frontends.   (line 171)
+* company-tooltip-maximum-width:         Tooltip Frontends.   (line 166)
+* company-tooltip-minimum:               Tooltip Frontends.   (line 122)
+* company-tooltip-minimum-width:         Tooltip Frontends.   (line 149)
+* company-tooltip-offset-display:        Tooltip Frontends.   (line 112)
+* company-tooltip-width-grow-only:       Tooltip Frontends.   (line 158)
 * company-transformers:                  Candidates Post-Processing.
                                                               (line   6)
 
@@ -1523,30 +1558,34 @@ Function Index
 * Menu:
 
 * company-abbrev:                        Template Expansion.  (line   6)
-* company-abort:                         Commands.            (line  34)
+* company-abort:                         Commands.            (line  43)
 * company-begin-backend:                 Backends Usage Basics.
                                                               (line  24)
 * company-capf:                          Code Completion.     (line   6)
+* company-childframe-frontend:           Tooltip Frontends.   (line  26)
+* company-childframe-unless-just-one-frontend: Tooltip Frontends.
+                                                              (line  19)
 * company-clang:                         Code Completion.     (line  72)
 * company-complete:                      Usage Basics.        (line  10)
-* company-complete <1>:                  Commands.            (line  51)
-* company-complete-common:               Commands.            (line  51)
+* company-complete <1>:                  Commands.            (line  59)
+* company-complete-common:               Commands.            (line  39)
 * company-complete-common-or-cycle:      Commands.            (line  26)
 * company-complete-selection:            Commands.            (line  21)
+* company-cycle-backward:                Commands.            (line  36)
 * company-dabbrev:                       Text Completion.     (line   6)
 * company-dabbrev-code:                  Code Completion.     (line  33)
-* company-detect-icons-margin:           Tooltip Frontends.   (line 213)
+* company-detect-icons-margin:           Tooltip Frontends.   (line 245)
 * company-diag:                          Backends Usage Basics.
                                                               (line  13)
 * company-diag <1>:                      Troubleshooting.     (line   6)
-* company-dot-icons-margin:              Tooltip Frontends.   (line 182)
+* company-dot-icons-margin:              Tooltip Frontends.   (line 214)
 * company-echo-frontend:                 Echo Frontends.      (line  21)
 * company-echo-metadata-frontend:        Echo Frontends.      (line   9)
 * company-echo-strip-common-frontend:    Echo Frontends.      (line  27)
 * company-etags:                         Code Completion.     (line  98)
 * company-files:                         File Name Completion.
                                                               (line   6)
-* company-indent-or-complete-common:     Commands.            (line  51)
+* company-indent-or-complete-common:     Commands.            (line  59)
 * company-ispell:                        Text Completion.     (line  75)
 * company-keywords:                      Code Completion.     (line  67)
 * company-mode:                          Initial Setup.       (line   6)
@@ -1555,12 +1594,14 @@ Function Index
 * company-preview-common-frontend:       Preview Frontends.   (line  21)
 * company-preview-frontend:              Preview Frontends.   (line  17)
 * company-preview-if-just-one-frontend:  Preview Frontends.   (line  10)
-* company-pseudo-tooltip-frontend:       Tooltip Frontends.   (line  16)
+* company-pseudo-tooltip-frontend:       Tooltip Frontends.   (line  47)
 * company-pseudo-tooltip-unless-just-one-frontend: Tooltip Frontends.
-                                                              (line  10)
+                                                              (line  40)
 * company-pseudo-tooltip-unless-just-one-frontend-with-delay: Tooltip Frontends.
-                                                              (line  20)
+                                                              (line  51)
 * company-search-flex-regexp:            Candidates Search.   (line  26)
+* company-search-flex-words-in-any-order-regexp: Candidates Search.
+                                                              (line  30)
 * company-search-words-in-any-order-regexp: Candidates Search.
                                                               (line  23)
 * company-search-words-regexp:           Candidates Search.   (line  20)
@@ -1569,8 +1610,8 @@ Function Index
 * company-select-previous:               Commands.            (line  16)
 * company-select-previous-or-abort:      Commands.            (line  16)
 * company-semantic:                      Code Completion.     (line  90)
-* company-show-doc-buffer:               Commands.            (line  38)
-* company-show-location:                 Commands.            (line  45)
+* company-show-doc-buffer:               Commands.            (line  46)
+* company-show-location:                 Commands.            (line  53)
 * company-sort-by-backend-importance:    Candidates Post-Processing.
                                                               (line  53)
 * company-sort-by-occurrence:            Candidates Post-Processing.
@@ -1578,11 +1619,11 @@ Function Index
 * company-sort-prefer-same-case-prefix:  Candidates Post-Processing.
                                                               (line  59)
 * company-tempo:                         Template Expansion.  (line  11)
-* company-text-icons-margin:             Tooltip Frontends.   (line 175)
+* company-text-icons-margin:             Tooltip Frontends.   (line 207)
 * company-tng-frontend:                  Structure.           (line  26)
 * company-tng-mode:                      Structure.           (line  26)
-* company-vscode-dark-icons-margin:      Tooltip Frontends.   (line 167)
-* company-vscode-light-icons-margin:     Tooltip Frontends.   (line 168)
+* company-vscode-dark-icons-margin:      Tooltip Frontends.   (line 199)
+* company-vscode-light-icons-margin:     Tooltip Frontends.   (line 200)
 * company-yasnippet:                     Template Expansion.  (line  16)
 * global-company-mode:                   Initial Setup.       (line  18)
 
@@ -1603,12 +1644,12 @@ Concept Index
 * :with:                                 Grouped Backends.    (line  25)
 * abbrev:                                Template Expansion.  (line   6)
 * abort:                                 Usage Basics.        (line  23)
-* abort <1>:                             Commands.            (line  34)
+* abort <1>:                             Commands.            (line  43)
 * activate:                              Initial Setup.       (line   8)
 * active backend:                        Backends Usage Basics.
                                                               (line  13)
 * active backend <1>:                    Troubleshooting.     (line  14)
-* annotation:                            Tooltip Frontends.   (line  52)
+* annotation:                            Tooltip Frontends.   (line  83)
 * annotation <1>:                        Candidates Post-Processing.
                                                               (line  17)
 * auto-start:                            Initial Setup.       (line  13)
@@ -1631,21 +1672,22 @@ Concept Index
 * bug <1>:                               Troubleshooting.     (line  25)
 * bundled backends:                      Package Backends.    (line   6)
 * cancel:                                Usage Basics.        (line  23)
-* cancel <1>:                            Commands.            (line  34)
+* cancel <1>:                            Commands.            (line  43)
 * candidate:                             Terminology.         (line  10)
 * candidate <1>:                         Usage Basics.        (line  12)
 * candidate <2>:                         Usage Basics.        (line  15)
 * candidate <3>:                         Preview Frontends.   (line   6)
-* color:                                 Tooltip Frontends.   (line 222)
+* color:                                 Tooltip Frontends.   (line 254)
 * color <1>:                             Quick Access a Candidate.
                                                               (line  34)
 * common part:                           Usage Basics.        (line  17)
 * common part <1>:                       Commands.            (line  26)
-* common part <2>:                       Preview Frontends.   (line   6)
+* common part <2>:                       Commands.            (line  39)
+* common part <3>:                       Preview Frontends.   (line   6)
 * company-echo:                          Echo Frontends.      (line   6)
 * company-preview:                       Preview Frontends.   (line   6)
 * company-tng:                           Structure.           (line  26)
-* company-tooltip:                       Tooltip Frontends.   (line 222)
+* company-tooltip:                       Tooltip Frontends.   (line 254)
 * company-tooltip-search:                Candidates Search.   (line   6)
 * complete:                              Terminology.         (line   6)
 * complete <1>:                          Usage Basics.        (line  12)
@@ -1661,11 +1703,11 @@ Concept Index
 * configure <1>:                         Customization Interface.
                                                               (line   6)
 * configure <2>:                         Configuration File.  (line   6)
-* configure <3>:                         Tooltip Frontends.   (line  48)
-* configure <4>:                         Tooltip Frontends.   (line 222)
+* configure <3>:                         Tooltip Frontends.   (line  79)
+* configure <4>:                         Tooltip Frontends.   (line 254)
 * configure <5>:                         Preview Frontends.   (line  25)
 * configure <6>:                         Echo Frontends.      (line  38)
-* configure <7>:                         Candidates Search.   (line  30)
+* configure <7>:                         Candidates Search.   (line  34)
 * configure <8>:                         Quick Access a Candidate.
                                                               (line  25)
 * configure <9>:                         Quick Access a Candidate.
@@ -1674,18 +1716,19 @@ Concept Index
 * custom <1>:                            Customization Interface.
                                                               (line   6)
 * custom <2>:                            Configuration File.  (line   6)
-* custom <3>:                            Tooltip Frontends.   (line  48)
-* custom <4>:                            Tooltip Frontends.   (line 222)
+* custom <3>:                            Tooltip Frontends.   (line  79)
+* custom <4>:                            Tooltip Frontends.   (line 254)
 * custom <5>:                            Preview Frontends.   (line  25)
 * custom <6>:                            Echo Frontends.      (line  38)
-* custom <7>:                            Candidates Search.   (line  30)
+* custom <7>:                            Candidates Search.   (line  34)
 * custom <8>:                            Quick Access a Candidate.
                                                               (line  25)
 * custom <9>:                            Quick Access a Candidate.
                                                               (line  34)
-* definition:                            Commands.            (line  45)
+* cycle backwards:                       Commands.            (line  36)
+* definition:                            Commands.            (line  53)
 * distribution:                          Installation.        (line   6)
-* doc:                                   Commands.            (line  38)
+* doc:                                   Commands.            (line  46)
 * duplicates:                            Candidates Post-Processing.
                                                               (line  17)
 * duplicates <1>:                        Candidates Post-Processing.
@@ -1696,20 +1739,20 @@ Concept Index
 * error <1>:                             Troubleshooting.     (line  25)
 * expansion:                             Template Expansion.  (line   6)
 * extensible:                            Structure.           (line   6)
-* face:                                  Tooltip Frontends.   (line 222)
+* face:                                  Tooltip Frontends.   (line 254)
 * face <1>:                              Preview Frontends.   (line   6)
 * face <2>:                              Preview Frontends.   (line  25)
 * face <3>:                              Echo Frontends.      (line   6)
 * face <4>:                              Echo Frontends.      (line  38)
 * face <5>:                              Candidates Search.   (line   6)
-* face <6>:                              Candidates Search.   (line  30)
+* face <6>:                              Candidates Search.   (line  34)
 * face <7>:                              Filter Candidates.   (line   6)
 * face <8>:                              Quick Access a Candidate.
                                                               (line  34)
 * filter:                                Filter Candidates.   (line   6)
 * finish:                                Usage Basics.        (line  23)
-* finish <1>:                            Commands.            (line  34)
-* font:                                  Tooltip Frontends.   (line 222)
+* finish <1>:                            Commands.            (line  43)
+* font:                                  Tooltip Frontends.   (line 254)
 * font <1>:                              Quick Access a Candidate.
                                                               (line  34)
 * frontend:                              Structure.           (line   6)
@@ -1718,24 +1761,24 @@ Concept Index
 * grouped backends:                      Grouped Backends.    (line   6)
 * grouped backends <1>:                  Candidates Post-Processing.
                                                               (line  11)
-* icon:                                  Tooltip Frontends.   (line 151)
+* icon:                                  Tooltip Frontends.   (line 183)
 * install:                               Installation.        (line   6)
-* interface:                             Tooltip Frontends.   (line  48)
-* interface <1>:                         Tooltip Frontends.   (line 222)
+* interface:                             Tooltip Frontends.   (line  79)
+* interface <1>:                         Tooltip Frontends.   (line 254)
 * interface <2>:                         Preview Frontends.   (line  25)
 * interface <3>:                         Echo Frontends.      (line  38)
-* interface <4>:                         Candidates Search.   (line  30)
+* interface <4>:                         Candidates Search.   (line  34)
 * interface <5>:                         Quick Access a Candidate.
                                                               (line  34)
 * intro:                                 Initial Setup.       (line   6)
 * issue:                                 Troubleshooting.     (line   6)
 * issue tracker:                         Troubleshooting.     (line  25)
-* kind:                                  Tooltip Frontends.   (line 151)
-* location:                              Commands.            (line  45)
+* kind:                                  Tooltip Frontends.   (line 183)
+* location:                              Commands.            (line  53)
 * manual:                                Initial Setup.       (line   8)
 * manual <1>:                            Usage Basics.        (line  10)
-* margin:                                Tooltip Frontends.   (line 140)
-* margin <1>:                            Tooltip Frontends.   (line 159)
+* margin:                                Tooltip Frontends.   (line 172)
+* margin <1>:                            Tooltip Frontends.   (line 191)
 * minor-mode:                            Initial Setup.       (line   6)
 * module:                                Structure.           (line   6)
 * module <1>:                            Structure.           (line  10)
@@ -1747,6 +1790,7 @@ Concept Index
 * package backends:                      Package Backends.    (line   6)
 * pluggable:                             Structure.           (line   6)
 * pop-up:                                Tooltip Frontends.   (line   6)
+* popup:                                 Tooltip Frontends.   (line   6)
 * post-processing:                       Candidates Post-Processing.
                                                               (line   6)
 * prefix matches:                        Terminology.         (line  10)
@@ -1755,7 +1799,7 @@ Concept Index
 * quick-access:                          Quick Access a Candidate.
                                                               (line   6)
 * quit:                                  Usage Basics.        (line  23)
-* quit <1>:                              Commands.            (line  34)
+* quit <1>:                              Commands.            (line  43)
 * search:                                Candidates Search.   (line   6)
 * select:                                Usage Basics.        (line  12)
 * select <1>:                            Commands.            (line  11)
@@ -1764,7 +1808,7 @@ Concept Index
 * sort:                                  Candidates Post-Processing.
                                                               (line   6)
 * stop:                                  Usage Basics.        (line  23)
-* stop <1>:                              Commands.            (line  34)
+* stop <1>:                              Commands.            (line  43)
 * TAB:                                   Structure.           (line  26)
 * Tab and Go:                            Structure.           (line  26)
 * template:                              Template Expansion.  (line   6)
@@ -1777,45 +1821,45 @@ Concept Index
 
 
 Tag Table:
-Node: Top655
-Node: Overview2162
-Node: Terminology2570
-Node: Structure3873
-Node: Getting Started5363
-Node: Installation5641
-Node: Initial Setup6024
-Node: Usage Basics6872
-Node: Commands7846
-Ref: Commands-Footnote-110242
-Node: Customization10409
-Node: Customization Interface10881
-Node: Configuration File11414
-Ref: company-selection-wrap-around13728
-Node: Frontends16217
-Node: Tooltip Frontends17186
-Ref: Tooltip Frontends-Footnote-127882
-Node: Preview Frontends28119
-Ref: Preview Frontends-Footnote-129377
-Node: Echo Frontends29504
-Node: Candidates Search31033
-Node: Filter Candidates32365
-Node: Quick Access a Candidate33145
-Node: Backends34763
-Node: Backends Usage Basics35793
-Ref: Backends Usage Basics-Footnote-137225
-Node: Grouped Backends37309
-Node: Package Backends38820
-Node: Code Completion39747
-Node: Text Completion45264
-Node: File Name Completion49688
-Node: Template Expansion51234
-Node: Candidates Post-Processing51953
-Node: Troubleshooting54530
-Node: Index56201
-Node: Key Index56364
-Node: Variable Index57863
-Node: Function Index62716
-Node: Concept Index67416
+Node: Top642
+Node: Overview2136
+Node: Terminology2544
+Node: Structure3847
+Node: Getting Started5337
+Node: Installation5615
+Node: Initial Setup5998
+Node: Usage Basics7156
+Node: Commands8130
+Ref: Commands-Footnote-110798
+Node: Customization10965
+Node: Customization Interface11437
+Node: Configuration File11970
+Ref: company-selection-wrap-around14284
+Node: Frontends16773
+Node: Tooltip Frontends17742
+Ref: Tooltip Frontends-Footnote-129994
+Node: Preview Frontends30231
+Ref: Preview Frontends-Footnote-131489
+Node: Echo Frontends31616
+Node: Candidates Search33145
+Node: Filter Candidates34699
+Node: Quick Access a Candidate35479
+Node: Backends37097
+Node: Backends Usage Basics38127
+Ref: Backends Usage Basics-Footnote-139559
+Node: Grouped Backends39643
+Node: Package Backends41154
+Node: Code Completion42081
+Node: Text Completion47598
+Node: File Name Completion52022
+Node: Template Expansion52787
+Node: Candidates Post-Processing53506
+Node: Troubleshooting56083
+Node: Index57754
+Node: Key Index57917
+Node: Variable Index59562
+Node: Function Index64352
+Node: Concept Index69478
 
 End Tag Table
 
