@@ -1,5 +1,11 @@
 # History of user-visible changes
 
+# Next
+
+* ([#1547](https://github.com/company-mode/company-mode/pull/1547)) New user
+  option `company-dabbrev-maximum-length` with default 80, similar to the
+  existing option `company-dabbrev-minimum-length`.
+
 # 2026-07-21 (1.1.0)
 
 * `company-tooltip-minimum-width` has a new value: 15.
@@ -71,8 +77,5 @@
   `company-etags` also do that when `completion-styles` support is enabled.
 * `company-dabbrev-other-buffers` and `company-dabbrev-code-other-buffers` can
   now take a function as its value ([#1485](https://github.com/company-mode/company-mode/issues/1485))
-* Completion works in the middle of a symbol
-  ([#1474](https://github.com/company-mode/company-mode/pull/1474)).
-* New user option `company-inhibit-inside-symbols`. Set it to `t` to switch
 ...
 ...
