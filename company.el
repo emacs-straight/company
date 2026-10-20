@@ -1229,6 +1229,16 @@ MAX-LEN is how far back to try to match the IDLE-BEGIN-AFTER-RE regexp."
          (concat prefix (substring s len))))
      strings)))
 
+(defvar completion-lazy-hilit)
+(defvar completion-lazy-hilit-fn)
+
+(defun company--lazy-hilit (str hilit-fn)
+  (let ((completion-lazy-hilit-fn hilit-fn)
+        (completion-lazy-hilit t))
+    (if (fboundp 'completion-lazy-hilit)
+        (completion-lazy-hilit str)
+      str)))
+
 (defun company--match-from-capf-face (str)
   "Compute `match' result from a CAPF's completion fontification."
   (let* ((match-start nil) (pos -1)
@@ -1261,10 +1271,13 @@ MAX-LEN is how far back to try to match the IDLE-BEGIN-AFTER-RE regexp."
              (completion-styles-alist (copy-tree completion-styles-alist))
              ((nth 2 (assoc 'emacs22 completion-styles-alist))
               wrapper)
+             (completion-lazy-hilit t)
+             (completion-lazy-hilit-fn nil)
              (all (completion-all-completions (concat prefix suffix)
                                               table pred
                                               (length prefix)
                                               meta))
+             (hilit-fn (bound-and-true-p completion-lazy-hilit-fn))
              (last (last all))
              (base-size (or (cdr last) 0))
              ;; base-suffix-size is not available, but it's usually simple.
@@ -1274,6 +1287,7 @@ MAX-LEN is how far back to try to match the IDLE-BEGIN-AFTER-RE regexp."
     (unless keep-suffix
       (setcdr bounds 0))
     `((:completions . ,all)
+      (:hilit-fn . ,hilit-fn)
       (:boundaries . ,(cons (substring prefix base-size)
                             (substring suffix 0 (cdr bounds)))))))
 
@@ -1915,7 +1929,10 @@ update if FORCE-UPDATE."
 (defun company--preprocess-candidates (candidates)
   (cl-assert (cl-every #'stringp candidates))
   (unless (company-call-backend 'sorted)
-    (setq candidates (sort candidates 'string<)))
+    (setq candidates (sort candidates
+                           (if (< emacs-major-version 30)
+                               'string<
+                             nil))))
   (when (company-call-backend 'duplicates)
     (company--strip-duplicates candidates))
   candidates)
