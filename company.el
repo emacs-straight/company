@@ -2902,7 +2902,6 @@ each one wraps a part of the input string."
               (ding)
             (setq company-search-string new)
             (company-set-selection (- selection pos 1) t)))
-        (ding)
         (setq company-search-string new)
         (company-set-selection (+ selection pos) t))))
 
@@ -2996,8 +2995,6 @@ each one wraps a part of the input string."
     (define-key keymap (vector meta-prefix-char t) 'company-search-other-char)
     (define-key keymap (kbd "C-n") 'company-select-next-or-abort)
     (define-key keymap (kbd "C-p") 'company-select-previous-or-abort)
-    (define-key keymap (kbd "M-n") 'company--select-next-and-warn)
-    (define-key keymap (kbd "M-p") 'company--select-previous-and-warn)
     (define-key keymap (kbd "<down>") 'company-select-next-or-abort)
     (define-key keymap (kbd "<up>") 'company-select-previous-or-abort)
     (define-key keymap "\e\e\e" 'company-search-other-char)
