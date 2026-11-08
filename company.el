@@ -886,6 +886,8 @@ asynchronous call into synchronous.")
 
 (defvar company-mode-map
   (let ((keymap (make-sparse-keymap)))
+    (define-key keymap [remap completion-at-point] 'company-complete-common)
+    (define-key keymap [remap complete-symbol] 'company-complete-common)
     (define-key keymap [remap indent-for-tab-command] 'company-indent-for-tab-command)
     (define-key keymap [remap c-indent-line-or-region] 'company-indent-for-tab-command)
     keymap)
@@ -913,10 +915,7 @@ asynchronous call into synchronous.")
     (define-key keymap (kbd "TAB") 'company-complete-common-or-cycle)
     (define-key keymap [backtab] 'company-cycle-backward)
     (define-key keymap (kbd "C-M-i") 'company-complete-common)
-    (define-key keymap (kbd "<f1>") 'company--show-doc-buffer-and-warn)
-    (define-key keymap (kbd "C-h") 'company--show-doc-buffer-and-warn)
     (define-key keymap (kbd "M-h") 'company-show-doc-buffer)
-    (define-key keymap (kbd "C-w") 'company--show-location-and-warn)
     (define-key keymap (kbd "M-g") 'company-show-location)
     (define-key keymap "\C-s" 'company-search-candidates)
     (define-key keymap "\C-\M-s" 'company-filter-candidates)
@@ -925,13 +924,6 @@ asynchronous call into synchronous.")
   "Keymap that is enabled during an active completion.")
 
 (defvar company--disabled-backends nil)
-
-(defun company--warn-changed-binding ()
-  (interactive)
-  (run-with-idle-timer
-   0.01 nil
-   (lambda ()
-     (message "Warning: default bindings are being changed to M-h and M-g"))))
 
 (defun company-init-backend (backend)
   (and (symbolp backend)
@@ -3621,12 +3613,6 @@ automatically show the documentation buffer for each selection."
     (company--show-doc-buffer)))
 (put 'company-show-doc-buffer 'company-keep t)
 
-(defun company--show-doc-buffer-and-warn (&optional toggle-auto-update)
-  (interactive "P")
-  (company--warn-changed-binding)
-  (company-show-doc-buffer toggle-auto-update))
-(put 'company--show-doc-buffer-and-warn 'company-keep t)
-
 (defun company-show-location ()
   "Temporarily display a buffer showing the selected candidate in context."
   (interactive)
@@ -3647,12 +3633,6 @@ automatically show the documentation buffer for each selection."
               (forward-line (1- pos))))
           (set-window-start nil (point)))))))
 (put 'company-show-location 'company-keep t)
-
-(defun company--show-location-and-warn ()
-  (interactive)
-  (company--warn-changed-binding)
-  (company-show-location))
-(put 'company--show-location-and-warn 'company-keep t)
 
 ;;; package functions ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -3680,7 +3660,8 @@ automatically show the documentation buffer for each selection."
       (user-error "Cannot complete at point")))
 
 (defun company-begin-with (candidates
-                           &optional prefix-length require-match callback)
+                           &optional prefix-length require-match callback
+                           with-completion-styles)
   "Start a completion at point.
 CANDIDATES is the list of candidates to use and PREFIX-LENGTH is the length
 of the prefix that already is in the buffer before point.
@@ -3689,16 +3670,28 @@ It defaults to 0.
 CALLBACK is a function called with the selected result if the user
 successfully completes the input.
 
+WITH-COMPLETION-STYLES, when non-nil, means to match CANDIDATES using the
+configured completion styles.
+
 Example: \(company-begin-with \\='\(\"foo\" \"foobar\" \"foobarbaz\"\)\)"
-  (let ((begin-marker (copy-marker (point) t)))
+  (let ((begin-marker (copy-marker (- (point)
+                                      (or prefix-length 0))
+                                   nil)))
     (company-begin-backend
      (lambda (command &optional arg &rest _ignored)
        (pcase command
          (`prefix
-          (when (equal (point) (marker-position begin-marker))
-            (buffer-substring (- (point) (or prefix-length 0)) (point))))
+          (when (>= (point) begin-marker)
+            (buffer-substring begin-marker (point))))
          (`candidates
-          (all-completions arg candidates))
+          (if with-completion-styles
+              (assoc-default
+               :completions
+               (company--capf-completions arg "" candidates nil))
+            (all-completions arg candidates)))
+         (`no-cache t)
+         (`match (if with-completion-styles
+                     (company--match-from-capf-face arg)))
          (`require-match
           require-match)))
      callback)))
