@@ -2,6 +2,16 @@
 
 # Next
 
+* `company-text-icons-mapping` uses `"⇥"` for the icon beside the `snippet` kind
+  of candidates.  This should work fine on modern terminals, but not e.g. on
+  tty.  If that affects you, you can revert to the previous configuration:
+```el
+  (with-eval-after-load 'company
+    (setf (alist-get 'snippet company-text-icons-mapping)
+          '("S" font-lock-string-face)))
+```
+* `company-etags` uses `text` as the "kind" of its completions (this affects the
+  icons and the way deduplication works, for grouped backends).
 * `C-M-i` is remapped to `company-complete-common` in all supported buffers
   ([#1536](https://github.com/company-mode/company-mode/pull/1536)).
 * Legacy bindings on `C-h`/`<f1>` and `C-w` have been removed.
