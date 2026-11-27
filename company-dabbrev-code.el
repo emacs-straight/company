@@ -91,16 +91,11 @@ parameter and returns a list of major modes to search.  See also
           ((not company-dabbrev-code-completion-styles)
            (regexp-quote prefix))
           (t
-           ;; Use the cache at least after 2 chars.  We could also cache
-           ;; earlier, for users who set company-min-p-l to 1 or 0.
-           (let ((prefix (if (>= (length prefix) 2)
-                             (substring prefix 0 2)
-                           prefix)))
-             (concat
-              "\\(?:\\sw\\|\\s_\\)*?"
-              (mapconcat #'regexp-quote
-                         (mapcar #'string prefix)
-                         "\\(?:\\sw\\|\\s_\\)*?")))))))
+           (concat
+            "\\(?:\\sw\\|\\s_\\)*?"
+            (mapconcat #'regexp-quote
+                       (mapcar #'string prefix)
+                       "\\(?:\\sw\\|\\s_\\)*?"))))))
     (concat "\\_<" prefix-re "\\(?:\\sw\\|\\s_\\)*\\_>")))
 
 ;;;###autoload
@@ -136,18 +131,38 @@ comments or strings."
   (when company-dabbrev-code-completion-styles
     (let ((completion-styles (if (listp company-dabbrev-code-completion-styles)
                                  company-dabbrev-code-completion-styles
-                               completion-styles)))
+                               completion-styles))
+          (completion-ignore-case company-dabbrev-code-ignore-case))
       (company--capf-expand-common prefix suffix
                                    (company-dabbrev-code--table prefix)))))
 
 (defun company-dabbrev-code--candidates (prefix suffix)
-  (let* ((case-fold-search company-dabbrev-code-ignore-case))
-    (company-dabbrev-code--filter
-     prefix suffix
-     (company-dabbrev-code--table prefix))))
+  (company-dabbrev-code--filter
+   prefix suffix
+   (company-dabbrev-code--table prefix)))
+
+(defun company-dabbrev-code--search-prefix (prefix)
+  (let ((cached (company-cache-fetch
+                 'dabbrev-code-prefix
+                 (lambda () prefix)
+                 :expire t)))
+    (if (or
+         (equal cached prefix)
+         (and
+          ;; If the cached result is for prefix shorter than minimum,
+          ;; recompute when prefix gets longer (a more thorough scan).
+          (>= (length cached) company-minimum-prefix-length)
+          (string-prefix-p cached prefix)))
+        cached
+      ;; Flush when the user backspaces over cached input.
+      (company-cache-delete 'dabbrev-code-prefix)
+      (company-dabbrev-code--search-prefix prefix))))
 
 (defun company-dabbrev-code--table (prefix)
-  (let ((regexp (company-dabbrev-code--make-regexp prefix)))
+  (let ((case-fold-search company-dabbrev-code-ignore-case)
+        (regexp (company-dabbrev-code--make-regexp
+                 (company-dabbrev-code--search-prefix
+                  prefix))))
     (company-cache-fetch
      'dabbrev-code-candidates
      (lambda ()
